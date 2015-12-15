@@ -69,6 +69,12 @@ $cordovaSQLite.execute(db, "CREATE TABLE  IF NOT EXISTS category(name text)");
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
+  
+$httpProvider.defaults.useXDomain = true;$httpProvider.defaults.withCredentials = true;
+delete $httpProvider.defaults.headers.common["X-Requested-With"];
+$httpProvider.defaults.headers.common["Accept"] = "application/json";
+$httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+
   $stateProvider
 
   // setup an abstract state for the tabs directive
