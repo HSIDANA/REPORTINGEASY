@@ -1,0 +1,85 @@
+<ion-view title="Workspace Inspection">
+<ion-nav-buttons side="right">
+</ion-nav-buttons>
+
+<ion-content padding="true">
+
+<div class="max-width ">
+  <div class="list no-margin-top">
+
+<div class = "col">
+    <label class="item item-input">
+
+      <span class="input-label">Inspection Date</span>
+      <!-- This was making report.date null for some reason. TODO: fix -->
+      <!-- TODO: ADD validation here - not max & min -->
+      <input type="datetime-local" ng-model="inspection.date" value="{{date | date:'mediumTime'}}">
+      <!-- <input type="datetime-local" ng-model="report.date" max="{{maxDateTimeString}}" min="{{minDateTimeString}}" value="{{date | date:'mediumTime'}}"> -->
+
+    </label>
+</div>
+<div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Plant/Department
+      </div>
+      <select ng-model="inspection.category" ng-change="selected()" class="form-control" > 
+        <option  ng-repeat="category in categories" value="{{category}}">{{category.categoryName}}</option> 
+      </select>
+    </label>
+</div>
+
+<!--
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Sub-Category
+      </div>
+      <select  ng-model="incident.subcategory" class="form-control" > 
+        <option ng-repeat="subcategory in subcategories" value="{{subcategory}}">{{subcategory.subcategoryName}}</option>
+      </select>
+    </label>
+-->
+<div class ="col">
+    <label class="item item-input">
+      <textarea placeholder="Inspector" ng-model="inspection.description"></textarea>
+    </label>
+</div>
+    <!-- TODO: Proper loading and callbacks - perhaps we should load the image once the user has added it? -->
+    <button id="no-margin-bottom" class="button button-outline button-block button-positive" ng-click="ShowPictures()">Add Image</button>
+    <img data-ng-src="{{inspection.imgURI}}" class="center" style="max-width: 100%" ng-show="displayImage()">
+
+    <!-- Location Buttons -->
+    <div class = "row no-padding">
+      <!-- TODO: fix - no-padding-left and right not working. -->
+      <div class = "col no-padding-left" style="padding-left: 0px">
+        <button class="button button-outline button-block button-positive" ng-click = "ShowLocation()">
+          <i class="ion-pinpoint icon-large"> My Location</i>
+        </button>
+      </div>
+      <div class = "col">
+        <button class="button button-outline button-block button-positive" ng-click="openModal()">
+          <i class="ion-pin icon-large"> Edit</i>
+        </button>
+      </div>
+      <!-- <div class = "col no-padding-right" style="padding-right: 0px">
+        <button class="button button-outline button-block button-positive" ng-click="imageLocation()">
+          <i class="ion-images icon-large"> From Image</i>
+        </button> 
+      </div> -->
+    </div>
+<!-- incident ===== inspection -->
+
+    <ion-item class="no-padding" scroll="false">
+
+    <map class="map-small" data-tap-disable="true" draggable="false" zoomControl="false" center="{{inspection.coords.latitude}},{{inspection.coords.longitude}}" zoom="16" disable-default-u-i="true">
+      <marker position="{{inspection.coords.latitude}},{{inspection.coords.longitude}}"></marker>
+    </map>
+  </ion-item>
+
+  <button class="button button-block button-positive" ng-click="submit()">Submit</button>
+  <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button>
+</div>
+</div>
+</ion-content>
+
+

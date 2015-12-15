@@ -1,0 +1,23 @@
+<ion-view title="Welcome">
+<ion-content class="max-width">
+<div class="list list-inset">
+ 
+
+
+    <button class="button button-block button-calm" ng-click="report()">Report Incidents</button>
+      <p class="text-center">or</p>
+
+   <label class="item item-input">
+        <input type="text" placeholder="Username or Email" autocorrect="off" autocapitalize="none" ng-model="user.username">
+    </label>
+    <label class="item item-input">
+        <input type="password" placeholder="Password" ng-model="user.password">
+    </label>
+    <button class="button button-block button-calm" ng-click="login()">Login as Admin</button>
+    <!-- <button class="button button-block button-calm button-clear button-outline" ng-click="twitterLogin()">Twitter</button> -->
+    <p class="text-center">
+        <a href  ng-click="forgot()">Forgot Login</a>
+    </p>
+
+</div>
+</ion-content>

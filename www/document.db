@@ -1,0 +1,7 @@
+create table category(id integer primary key , name text);
+insert into category (id,name) values(1, ‘Task Safety’);
+insert into category (id,name) values(2, ‘Plant’);
+insert into category (id,name) values(3, ‘Chemical’);
+insert into category (id,name) values(4, ‘General’);
+
+

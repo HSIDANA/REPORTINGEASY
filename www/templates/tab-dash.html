@@ -1,0 +1,225 @@
+<ion-view title="Risk Assessment">
+<!-- //https://github.com/dangrossman/bootstrap-daterangepicker/blob/master/website/index.html -->
+<ion-nav-buttons side="right">
+</ion-nav-buttons>
+
+<ion-content padding="true">
+<div class="max-width ">
+  <div class="list no-margin-top">
+<!--     <button class = "button" ng-click = "insert()">Insert</button>
+    <button class = "button" ng-click = "select('Nic')">Select</button> -->
+
+
+
+
+<!--      <label class="item item-input">Birth date</label>
+          <ionic-datepicker input-obj="birthdayDatePicker">
+            <button class="button button-block button-positive">{{myBirthday| date:'dd-MM-yyyy'}}
+            </button>
+          </ionic-datepicker> -->
+
+<!-- <input date-range-picker class="form-control date-picker" type="text" ng-model="date" min="'2014-02-23'" max="'2015-02-25'"/> -->
+<!-- <div class="form-group" ng-class="{'has-error': dateForm.daterange2.$invalid}">
+                    <label for="daterange2" class="control-label">Picker with min and max date
+                    </label>
+                    <input type = "date-range-picker" id="daterange2" name="daterange2" class="form-control date-picker" 
+                           min="'2015-01-23'" max="'2015-08-25'" ng-model="date"
+                           required/>
+                    </div> -->
+
+    <div class = "col">
+      <label class="item item-input">
+        <textarea placeholder="Register Number" ng-model="report.text"></textarea>
+      </label>
+    </div>
+
+
+<!-- <date-range-picker ng-model="dateRange"
+                               class="pull-right"
+                               style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc"
+                       minDate="'2015-01-23'" maxDate="'2015-08-25'"
+                               >
+            
+
+</date-range-picker> -->
+
+
+    <div class = "col">
+      <label class="item item-input">
+        <span class="input-label">Time</span>
+        <!-- This was making report.date null for some reason. TODO: fix -->
+        <!-- TODO: ADD validation here - not max & min -->
+        <input type="datetime-local" ng-model="report.date" value="{{date | date:'mediumTime'}}">
+        <!-- <input type="datetime-local" ng-model="report.date" max="{{maxDateTimeString}}" min="{{minDateTimeString}}" value="{{date | date:'mediumTime'}}"> -->
+      </label>
+    </div>
+
+    <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Category
+      </div>
+      <select ng-model="report.category"  class="form-control" > 
+        <option  ng-repeat="category in categories track by $index" value="{{category}}">{{category.categoryName}}</option> 
+      </select>
+    </label>
+  </div>
+
+  <div class = "col">
+    <label class="item item-input">
+      <textarea placeholder="RA Title" ng-model="report.RAtitle"></textarea>
+    </label>
+  </div>
+
+  <div class = "col">
+    <label class="item item-input">
+      <textarea placeholder="Asset Number" ng-model="report.assetNo"></textarea>
+    </label>
+  </div>
+
+    <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Plant/Department
+      </div>
+      <select ng-model="report.deoartment"  class="form-control" > 
+        <option  ng-repeat="department in departments track by $index" value="{{department}}">{{department.departmentName}}</option> 
+      </select>
+    </label>
+  </div>
+  <div class = "row">
+    <div class = "col">
+      <ion-checkbox >Concept</ion-checkbox></div>
+      <div class = "col">
+        <ion-checkbox>New/Initial/Commissioning</ion-checkbox></div></div>
+        <div class = "row">
+          <div class = "col">
+            <ion-checkbox>Altered/revised</ion-checkbox></div>
+            <div class = "col">
+              <ion-checkbox>Relocated</ion-checkbox></div></div>
+    <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Managers
+      </div>
+      <select ng-model="report.managers"  class="form-control" > 
+        <option  ng-repeat="manager in managers track by $index" value="{{manager}}">{{manager.managerName}}</option> 
+      </select>
+    </label>
+  </div>
+
+  <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Management Rep
+      </div>
+      <select ng-model="report.rep" ng-change="selected()" class="form-control" > 
+        <!--
+        <option  ng-repeat="category in department" value="{{category}}">{{category.departmentName}}</option> -->
+
+      </select>
+    </label>
+  </div>
+
+  <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        HSE Rep
+      </div>
+      <select ng-model="report.hseRep" ng-change="selected()" class="form-control" > 
+      </select>
+    </label>
+  </div>
+  
+  <div class = "row">
+    <div class = "col">
+      <label class="item item-input">
+        <textarea placeholder="Team Member 1" ng-model="report.team1"></textarea>
+      </label>
+    </div>
+    <div class = "col">
+     <label class="item item-input item-select">
+      <div class="input-label">
+        Title
+      </div></div></div>
+
+<div class = "row">
+  <div class = "col">
+    <label class="item item-input">
+      <textarea placeholder="Team Member 2" ng-model="report.team2"></textarea>
+    </label>
+  </div>
+  <div class = "col">
+   <label class="item item-input item-select">
+    <div class="input-label">
+      Title
+    </div>
+    <select ng-model="report.department" ng-change="selected()" class="form-control" > 
+        <!--
+        <option  ng-repeat="category in department" value="{{category}}">{{category.departmentName}}</option> -->
+
+      </select>
+    </label>
+  </div></div>
+  
+  <div class = "row">
+    <div class = "col">
+      <label class="item item-input">
+        <textarea placeholder="Team Member 3" ng-model="report.team3"></textarea>
+      </label>
+    </div>
+    <div class = "col">
+     <label class="item item-input item-select">
+      <div class="input-label">
+        Title
+      </div>
+      <select ng-model="report.department" ng-change="selected()" class="form-control" > 
+        <!--
+        <option  ng-repeat="category in department" value="{{category}}">{{category.departmentName}}</option> -->
+
+      </select>
+    </label>
+  </div></div>
+  
+  <div class = "row">
+    <div class = "col">
+      <label class="item item-input">
+        <textarea placeholder="Team Member 4" ng-model="report.team4"></textarea>
+      </label>
+    </div>
+    <div class = "col">
+     <label class="item item-input item-select">
+      <div class="input-label">
+        Title
+      </div>
+      <select ng-model="report.department" ng-change="selected()" class="form-control" > 
+        <!--
+        <option  ng-repeat="category in department" value="{{category}}">{{category.departmentName}}</option> -->
+
+      </select>
+    </label>
+  </div></div>
+  <div class = "col">
+    <label class="item item-input">
+
+      <span class="input-label">Review Date</span>
+      <!-- This was making report.date null for some reason. TODO: fix -->
+      <!-- TODO: ADD validation here - not max & min -->
+      <input type="datetime-local" ng-model="report.revDate" value="{{date | date:'mediumTime'}}">
+      <!-- <input type="datetime-local" ng-model="report.date" max="{{maxDateTimeString}}" min="{{minDateTimeString}}" value="{{date | date:'mediumTime'}}"> -->
+
+    </label>
+  </div>
+  <div class = "row">
+    <div class = "col">
+      <ion-checkbox >Equipment De-Commissioned</ion-checkbox></div>
+      <div class = "col">
+        <ion-checkbox>RA Superceeded</ion-checkbox></div></div>
+
+        <button class="button button-block button-positive" ng-click="submit()">Submit</button>
+        <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button>
+      </div>
+    </div>
+  </ion-content>
+
+

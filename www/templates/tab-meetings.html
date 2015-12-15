@@ -1,0 +1,66 @@
+<ion-view title="HSE Meetings">
+<ion-nav-buttons side="right">
+</ion-nav-buttons>
+
+<ion-content padding="true">
+
+<div class="max-width ">
+  <div class="list no-margin-top">
+
+<div class = "col">
+    <label class="item item-input">
+      <span class="input-label">Meeting Date</span>
+      <input type="datetime-local" ng-model="meeting.date" value="{{date | date:'mediumTime'}}">
+    </label>
+</div>
+    <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Plant/Department
+      </div>
+      <select ng-model="meeting.plant"  class="form-control" > 
+        <option  ng-repeat="department in plant track by $index" value="{{department}}">{{department.departmentName}}</option> 
+      </select>
+    </label>
+  </div>
+
+    <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+      Meeting Type
+      </div>
+      <select ng-model="meeting.type"  class="form-control" > 
+        <option  ng-repeat="meetingType in meetingTypes track by $index" value="{{meetingType}}">{{meetingType.typeName}}</option> 
+      </select>
+    </label>
+  </div>
+
+
+
+  <div class ="col">
+    <label class="item item-input">
+      <textarea placeholder="Meeting Chair" ng-model="meeting.description"></textarea>
+    </label>
+</div>
+
+<div class = "col">
+      <label class="item item-input">
+      <textarea placeholder="Comments" ng-model="meeting.description"></textarea>
+    </label>
+</div>
+<!--removed ng-value might need later to store in db-->
+
+<div class ="row">
+  <div class = "col">
+<ion-radio ng-model="choice">Add Action</ion-radio></div>
+<div class = "col">
+<ion-radio ng-model="choice" >No Action Required</ion-radio></div></div>
+
+
+  <button class="button button-block button-positive" ng-click="submit()">Submit</button>
+  <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button>
+</div>
+</div>
+</ion-content>
+
+

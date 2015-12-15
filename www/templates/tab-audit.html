@@ -1,0 +1,68 @@
+<ion-view title="Internal/External Audits">
+<ion-nav-buttons side="right">
+</ion-nav-buttons>
+
+<ion-content padding="true">
+
+<div class="max-width ">
+  <div class="list no-margin-top">
+
+<div class = "col">
+    <label class="item item-input">
+
+      <span class="input-label">Audit Date</span>
+      <!-- This was making report.date null for some reason. TODO: fix -->
+      <!-- TODO: ADD validation here - not max & min -->
+      <input type="datetime-local" ng-model="inspection.date" value="{{date | date:'mediumTime'}}">
+      <!-- <input type="datetime-local" ng-model="report.date" max="{{maxDateTimeString}}" min="{{minDateTimeString}}" value="{{date | date:'mediumTime'}}"> -->
+
+    </label>
+</div>
+<div class = "row">
+  <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Source
+      </div>
+      <select ng-model="inspection.category" ng-change="selected()" class="form-control" > 
+        <option>
+Internal
+        </option> 
+           <option>
+External
+        </option> 
+      </select>
+    </label>
+</div>
+
+    <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Plant/Department
+      </div>
+      <select ng-model="report.auditDepartment"  class="form-control" > 
+        <option  ng-repeat="department in departments track by $index" value="{{department}}">{{department.departmentName}}</option> 
+      </select>
+    </label>
+  </div></div>
+
+<div class ="row">
+  <div class ="col">
+    <label class="item item-input">
+      <textarea placeholder="Auditor" ng-model="inspection.description"></textarea>
+    </label>
+</div>
+<div class = "col">
+      <label class="item item-input">
+      <textarea placeholder="AUdit Title" ng-model="inspection.description"></textarea>
+    </label>
+</div>
+</div>
+
+  <button class="button button-block button-positive" ng-click="submit()">Submit</button>
+  <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button>
+</div>
+</div>
+</ion-content>
+
+

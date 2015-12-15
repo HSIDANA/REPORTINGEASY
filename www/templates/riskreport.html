@@ -1,0 +1,119 @@
+<ion-view title="Risk Assessment Report">
+<ion-nav-buttons side="right">
+</ion-nav-buttons>
+
+<ion-content padding="true">
+<div class="max-width ">
+  <div class="list no-margin-top">
+
+    <div class = "col">
+      <label class="item item-input">
+        <textarea placeholder="RA Number (New or Legacy)" ng-model="riskreport.number"></textarea>
+      </label>
+    </div>
+
+
+    <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Managers
+      </div>
+      <select ng-model="riskreport.managers"  class="form-control" > 
+        <option  ng-repeat="manager in riskmanagers track by $index" value="{{manager}}">{{manager.managerName}}</option> 
+      </select>
+    </label>
+  </div>
+
+
+<ion-list>
+    <div class = "col">
+       Department
+          <div class = "container">
+           
+  <ion-checkbox ng-model="riskreport.department" ng-repeat="department in riskdepartments track by $index" value="{{department}}">{{department.departmentName}}</ion-checkbox></div></div>
+</ion-list>
+     
+
+    <div class = "col">
+      Category
+    <div class = "container">
+
+<ion-list>
+  <ion-checkbox ng-model="riskreport.category" ng-repeat="category in riskcategories track by $index" value="{{category}}">{{category.categoryName}}</ion-checkbox>
+</ion-list>
+      </div> </div>
+
+
+
+
+<!--    <tick-list multiple="true" selected-icon="ion-checkmark-circled">
+            <tick-list-item ng-repeat="department in riskdepartments" selected="{{department.selected}}" selected-icon="{{department.icon}}" model="department" on-change="onItemChanged(department)">{{department.departmentName}}</tick-list-item>
+        </tick-list> -->
+<!-- 
+    <div class = "col">
+ 
+      <div class="input-label">
+        Category
+      </div></div>
+      <div class = "col">
+      <select  multiple ng-model="riskreport.department"  class="form-control" > 
+        <option  ng-repeat="department in riskdepartments track by $index" value="{{department}}">{{department.departmentName}}</option> 
+      </select>
+ <!--    </label> -->
+<!--   </div>
+
+
+    <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Category
+      </div>
+      <select  multiple ng-model="riskreport.category"  class="form-control" > 
+        <option  ng-repeat="category in riskcategories track by $index" value="{{category}}">{{category.categoryName}}</option> 
+      </select>
+    </label>
+  </div> --> 
+
+    <div class = "row">
+  <!--     <div class = "col">
+       <button class="button button-block button-positive"> 
+    Select RA Raised date range</button>
+      </div> -->
+        <div class = "col">
+<ionic-datepicker input-obj="datepickerObject">
+  <button class="button button-block button-positive"> 
+    RA Raised Date FROM:  {{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}</button>
+</ionic-datepicker></div>
+
+<div class = "col">
+
+<ionic-datepicker input-obj="datepickerObject1">
+  <button class="button button-block button-positive"> 
+    RA Raised Date TO:   {{datepickerObject1.inputDate | date:'dd - MMMM - yyyy'}}</button>
+</ionic-datepicker>
+</div></div>
+
+       
+     <div class = "row">
+  <!--     <div class = "col">
+       <button class="button button-block button-positive"> 
+    Select RA Raised date range</button>
+      </div> -->
+        <div class = "col">
+<ionic-datepicker input-obj="datepickerObject2">
+  <button class="button button-block button-positive"> 
+    Review Date FROM:  {{datepickerObject2.inputDate | date:'dd - MMMM - yyyy'}}</button>
+</ionic-datepicker></div>
+
+<div class = "col">
+
+<ionic-datepicker input-obj="datepickerObject3">
+  <button class="button button-block button-positive"> 
+    Review Date TO:   {{datepickerObject3.inputDate | date:'dd - MMMM - yyyy'}}</button>
+</ionic-datepicker>
+</div></div>
+</div></div>
+
+  </ion-content>
+
+

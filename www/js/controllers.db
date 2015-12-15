@@ -1,0 +1,166 @@
+//http://learn.ionicframework.com/formulas/backend-data/
+
+angular.module('starter.controllers', ['ngCordova'])
+.controller('DashCtrl', function($scope, $state, $location,$ionicPopup, $http, $ionicModal,$cordovaSQLite) {
+  
+  var maxDateTime = new Date();
+  var minDate = maxDateTime - 1000 * 60 * 60 * 24 * 5;
+  var minDateTime = new Date(minDate);
+  $scope.maxDateTimeString = maxDateTime.toISOString().split(".")[0];
+  $scope.minDateTimeString = minDateTime.toISOString().split(".")[0];
+
+  $http.get('js/resources/categories.js').success(function (results) {
+    $scope.categories = results.categories;
+
+$scope.report = {}
+    $scope.date= new Date();
+    var newDate = new Date(); 
+    var convertedDateString = newDate.toLocaleString();
+    var convertedDate = new Date(convertedDateString);
+    $scope.report.date = convertedDate;
+    $scope.categories = categories;
+    $scope.report.category = {};
+var db = 9;
+
+  if (window.cordova && window.SQLitePlugin) 
+    {  db = $cordovaSQLite.openDB( 'myApp.db', 1 ); 
+} else 
+{ db = window.openDatabase('myApp', '1.0', 'myApp.db', 100 * 1024 * 1024); 
+}
+
+
+$scope.items = [];
+ db.transaction(function(tx) 
+ { 
+  tx.executeSql('SELECT * FROM category', [], function (tx, results) 
+  { var len = results.rows.length; 
+  for (var i = 0; i < len; i++)
+   { $scope.items.push(
+   { 
+   name: results.rows.item(i).name }); 
+$scope.$apply(); } }); }, function(error) { console.log(error) });
+
+
+// var db;
+// if (window.cordova) {
+//       db = $cordovaSQLite.openDB({ name: "myApp.db" }); //device
+//     }else{
+//       db = window.openDatabase("myApp.db", " ", "my", 1024 * 1024 * 100); // browser
+//     }
+
+//     $scope.selectAll = function() {
+//         var query = "SELECT name FROM category";
+//         $cordovaSQLite.execute(db, query, []).then(function(res) {
+//             if(res.rows.length > 0) {
+//                 for(var i = 0; i < res.rows.length; i++) {
+//                     $scope.items.push(name:res.rows.item(i).name);
+//                 }
+//             } else {
+//                 console.log("No results found");
+//             }
+//         }, function (err) {
+//             console.error(err);
+//         });
+//     }
+
+
+
+  });
+})
+.controller('AuditCtrl', function($scope, $state, $location,$ionicPopup, $http, $ionicModal) {
+  
+  var maxDateTime = new Date();
+  var minDate = maxDateTime - 1000 * 60 * 60 * 24 * 5;
+  var minDateTime = new Date(minDate);
+  $scope.maxDateTimeString = maxDateTime.toISOString().split(".")[0];
+  $scope.minDateTimeString = minDateTime.toISOString().split(".")[0];
+
+
+})
+.controller('MeetingsCtrl', function($scope, $state, $location,$ionicPopup,$ngCordova,$cordovaSQLite, $http, $ionicModal) {
+
+
+
+
+
+
+        // Execute SELECT statement to load message from database.
+
+  var maxDateTime = new Date();
+  var minDate = maxDateTime - 1000 * 60 * 60 * 24 * 5;
+  var minDateTime = new Date(minDate);
+  $scope.maxDateTimeString = maxDateTime.toISOString().split(".")[0];
+  $scope.minDateTimeString = minDateTime.toISOString().split(".")[0];
+
+  $http.get('js/resources/categories.json').success(function (results) {
+    $scope.categories = results.categories;
+
+$scope.report = {}
+    $scope.date= new Date();
+    var newDate = new Date(); 
+    var convertedDateString = newDate.toLocaleString();
+    var convertedDate = new Date(convertedDateString);
+    $scope.report.date = convertedDate;
+    $scope.categories = categories;
+    $scope.report.category = {};
+
+  });
+
+})
+.controller('LoginController', function($scope, $location,$ionicPopup)
+{
+    $scope.user = {};
+$scope.report = function report(){
+
+                      $location.path( 'tab/dash');
+}
+
+     $scope.login = function login() {
+
+      var username=$scope.user.username;
+        var password=$scope.user.password;
+          if(username=="admin" && password=="admin123")
+        {
+            $location.path( '/tab/dash');
+        }
+         else if (username=="amber" && password=="password")
+         {
+                      $location.path( '/tab/report');
+         }
+        else
+        {
+                  var alertPopup = $ionicPopup.alert({
+            title: 'Login failed!',
+            template: 'Please check your credentials!'
+        });
+        }
+
+     }
+        //$location.path('/tab/account');
+    
+
+})
+.controller('ChatsCtrl', function($scope, Chats) {
+  // With the new view caching in Ionic, Controllers are only called
+  // when they are recreated or on app start, instead of every page change.
+  // To listen for when this page is active (for example, to refresh data),
+  // listen for the $ionicView.enter event:
+  //
+  //$scope.$on('$ionicView.enter', function(e) {
+  //});
+
+  $scope.chats = Chats.all();
+  $scope.remove = function(chat) {
+    Chats.remove(chat);
+  };
+})
+
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+  $scope.chat = Chats.get($stateParams.chatId);
+})
+
+.controller('AccountCtrl', function($scope) {
+  $scope.settings = {
+    enableFriends: true
+  };
+});
