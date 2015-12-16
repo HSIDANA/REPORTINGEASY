@@ -18,6 +18,18 @@
     </label>
   </div>
 
+
+<ion-list>
+    <div class = "col">
+       Responsible Person
+          <div class = "container">
+           
+  <ion-checkbox ng-model="riskreport.department" ng-repeat="department in riskdepartments track by $index" value="{{department}}">{{department.departmentName}}</ion-checkbox></div></div>
+</ion-list>
+     
+
+
+
     <div class = "col">
     <label class="item item-input item-select">
       <div class="input-label">

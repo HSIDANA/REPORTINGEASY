@@ -1,0 +1,68 @@
+    <ion-view title="Admin Data">
+<ion-nav-buttons side="right">
+</ion-nav-buttons>
+<ion-content padding="true">
+<div class="max-width ">
+  <div class="list no-margin-top">
+<br><br>
+
+    <div class = "row">
+    	    <div class = "col">
+      <label class="item item-input">
+        <input type="text" placeholder="Manager Name" autocorrect="off" autocapitalize="none" ng-model="data.manager">
+<!-- 
+        <textarea placeholder="Manager Name" ng-model="data.manager"></textarea> -->
+      </label></div>
+    <div class = "col">
+<button class="button button-dark" ng-click="addManager()" >
+
+Add Manager</button>
+    </div></div>
+
+
+    <div class = "row">
+    	    <div class = "col">
+      <label class="item item-input">
+        <textarea placeholder="Manager Rep" ng-model="data.representative"></textarea>
+      </label></div>
+    <div class = "col">
+<button class="button button-dark" ng-click="addRep()"> Add Manager Rep</button>
+    </div></div>
+
+        <div class = "row">
+    	    <div class = "col">
+      <label class="item item-input">
+        <textarea placeholder="Incident Type" ng-model="data.incident"></textarea>
+      </label></div>
+    <div class = "col">
+<button class="button button-dark"  ng-click="addIncidentType()"> Add Incident Type</button>
+    </div></div>
+
+            <div class = "row">
+    	    <div class = "col">
+      <label class="item item-input">
+        <textarea placeholder="Category" ng-model="data.category"></textarea>
+      </label></div>
+    <div class = "col">
+<button class="button button-dark" ng-click="addCategories()"> Add categories</button>
+    </div></div>
+
+            <div class = "row">
+    	    <div class = "col">
+      <label class="item item-input">
+        <textarea placeholder="Add Department" ng-model="data.department"></textarea>
+      </label></div>
+    <div class = "col">
+<button class="button button-dark" ng-click="addDepartment()"> Add Department</button>
+    </div></div>
+
+        <div class = "row">
+    	    <div class = "col">
+      <label class="item item-input">
+        <textarea placeholder="Meeting Type" ng-model="data.meeting"></textarea>
+      </label></div>
+    <div class = "col">
+<button class="button button-dark" ng-click="addMeetingType()"> Add Meeting Type</button>
+    </div></div>
+    </div></div>
+</ion-content>

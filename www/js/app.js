@@ -5,8 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var db;// can be used in any controller - this var is globally accessible
-angular.module('starter', ['ionic','starter.authservice','starter.logincontroller',
+var db;
+var fb = null;// can be used in any controller - this var is globally accessible
+angular.module('starter', ['ionic','starter.logincontroller',
   'starter.accountctrl',
   'starter.auditctrl',
   'starter.chatdetailctrl',
@@ -16,10 +17,15 @@ angular.module('starter', ['ionic','starter.authservice','starter.logincontrolle
     'starter.riskreportcontroller',
     'starter.adminctrl',
     'starter.actioncontroller',
+        'starter.admindatactrl',
+            'starter.admindutiesctrl',
+            'firebase',
+          
+            
   'ngCordova'])
 
 
-  .run(function($ionicPlatform, $cordovaSQLite,  $rootScope) {
+  .run(function($ionicPlatform, $cordovaSQLite,  $rootScope ,$firebaseObject) {
         $ionicPlatform.ready(function() {
             if(window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -42,6 +48,7 @@ $cordovaSQLite.execute(db, "CREATE TABLE  IF NOT EXISTS category(name text)");
 
 
 }
+  
 
     // db = $cordovaSQLite.openDB({ name: "document.db"});
     //         $cordovaSQLite.execute(db, "CREATE TABLE ID IF NOT EXISTS category(id integer primary key autoincrement, name text)");
@@ -158,6 +165,16 @@ $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
     url:'/admin',
     templateUrl: 'templates/admin.html',
     controller: 'AdminCtrl'
+  }) 
+.state('admindata', {
+    url:'/admindata',
+    templateUrl: 'templates/admindata.html',
+    controller: 'AdminDataCtrl'
+  }) 
+.state('adminduties', {
+    url:'/adminduties',
+    templateUrl: 'templates/adminduties.html',
+    controller: 'AdminDutiesCtrl'
   }) 
 
 

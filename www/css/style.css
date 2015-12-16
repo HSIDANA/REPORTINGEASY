@@ -23,6 +23,11 @@ a {
 .dropdown ul {
     margin: -1px 0 0 0;
 }
+.button-custom,
+.button-custom .icon:before{
+  font-size: 14px;
+  color: #fff;
+}
 .dropdown dd {
     position:relative;
 }

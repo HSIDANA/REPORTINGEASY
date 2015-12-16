@@ -1,38 +1,22 @@
 angular.module('starter.logincontroller', [])
-.controller('LoginController', function($scope, $location,$ionicPopup,AuthService)
+.controller('LoginController', function($scope, $location,$ionicPopup)
 {
     $scope.user = {};
 
 
-    $scope.allow = function() {
-
-        return AuthService.allow();
-    };
-
-    $scope.disallow = function() {
-        return AuthService.disallow();
-    };
-
-    $scope.logout = function() {
-        return AuthService.logout();
-    };
-
-    $scope.isAllowed = function() {
-        alert("ji");
-        return AuthService.isAllowed();
-    };  
 
 
      $scope.login = function login() {
 
       var username=$scope.user.username;
         var password=$scope.user.password;
+           // <input type="text" placeholder="Username or Email" autocorrect="off" autocapitalize="none" ng-model="user.username">
 
 
           if (username=="amber" && password=="password")
          {
 
-                      $location.path( '/admin');
+                      $location.path( '/adminduties');
          }
         else
         {

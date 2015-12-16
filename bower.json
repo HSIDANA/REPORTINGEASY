@@ -6,6 +6,10 @@
   },
   "dependencies": {
     "angular-daterangepicker": "~0.2.2",
-    "ionic-datepicker": "~0.9.0"
+    "ionic-datepicker": "~0.9.0",
+    "angularfire": "~1.1.3"
+  },
+  "resolutions": {
+    "angular": "1.3.x || 1.4.x"
   }
 }
