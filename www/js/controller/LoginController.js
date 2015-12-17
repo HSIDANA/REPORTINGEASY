@@ -4,6 +4,10 @@ angular.module('starter.logincontroller', [])
     $scope.user = {};
 
 
+     $scope.report = function report() {
+              $location.path( '/tab/dash');
+
+}
 
 
      $scope.login = function login() {
