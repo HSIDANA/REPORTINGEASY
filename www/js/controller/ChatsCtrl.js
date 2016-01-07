@@ -39,7 +39,6 @@ $ionicHistory.clearHistory();
 
         navigator.camera.getPicture(onSuccess, onFail,
             {
-              alert("getin");
                 sourceType : Camera.PictureSourceType.CAMERA,
                 correctOrientation: true,
                 quality: 75,
