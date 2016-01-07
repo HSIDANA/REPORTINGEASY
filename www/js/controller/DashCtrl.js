@@ -1,5 +1,5 @@
 angular.module('starter.dashctrl', [])
-.controller('DashCtrl', function($scope, $state, $location,$cordovaCamera, $ionicPopup, $http, $ionicModal) {
+.controller('DashCtrl', function($scope, $state, $location,$cordovaCamera, $ionicPopup, $http, $ionicModal, $firebase, $firebaseArray) {
 
 
  // $scope.myBirthday = new Date(1968, 10, 26);
@@ -21,13 +21,55 @@ angular.module('starter.dashctrl', [])
 
 	});
 
-	$http.get('js/resources/managers.js').success(function (results) {
+	// $http.get('js/resources/managers.js').success(function (results) {
 
-		//$scope.categories = results.categories;
+	// 	//$scope.categories = results.categories;
 
-		$scope.managers = managers;
+	// 	$scope.managers = managers;
 
-	});
+	// 
+ $scope.Initialize = function() {
+ var ref = new Firebase("https://mysafe.firebaseio.com/category/");
+var typeArray = $firebaseArray(ref);
+
+typeArray.$loaded().then( function (data) {
+	
+            $scope.managers = data;
+            alert(data);
+        });
+//  var name ;
+//  var manager = [];
+//  var k;
+// // Retrieve new posts as they are added to our database
+// ref.once("value", function(snapshot) {
+// 	 snapshot.forEach(function(messageSnapshot) {
+	  
+// 	    k = messageSnapshot.key();
+// 	   alert(k);
+
+// 	   $scope.managers = messageSnapshot.child("name").val();
+
+
+
+//   var nameSnapshot = snapshot.child("managers");
+//   var name = nameSnapshot.val();
+
+//   // name === { first: "Fred", last: "Flintstone"}
+//   var firstNameSnapshot = snapshot.child("name/name");
+//   var firstName = firstNameSnapshot.val();
+//   // firstName === "Fred"
+// $scope.managers = data;
+
+
+  // age === null (because there is no "age" child in the data snapshot)
+  // });
+	
+// });
+
+
+}
+
+
 		$http.get('js/resources/department.js').success(function (results) {
 
 		//$scope.categories = results.categories;

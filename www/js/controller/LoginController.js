@@ -1,6 +1,7 @@
 angular.module('starter.logincontroller', [])
-.controller('LoginController', function($scope, $location,$ionicPopup)
+.controller('LoginController', function($scope, $location, $ionicPopup)
 {
+   
     $scope.user = {};
 
 

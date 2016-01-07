@@ -1,5 +1,5 @@
 angular.module('starter.meetingsctrl', [])
-.controller('MeetingsCtrl', function($scope, $location,$ionicPopup,$cordovaSQLite, $http) {
+.controller('MeetingsCtrl', function($scope, $location,$ionicPopup, $http) {
 
 
   $http.get('js/resources/department.js').success(function (results) {

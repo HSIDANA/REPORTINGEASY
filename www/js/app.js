@@ -20,7 +20,7 @@ angular.module('starter', ['ionic','starter.logincontroller',
         'starter.admindatactrl',
             'starter.admindutiesctrl',
             'firebase',
-          
+          'starter.authservice',
             
   'ngCordova'])
 
@@ -60,6 +60,9 @@ $cordovaSQLite.execute(db, "CREATE TABLE  IF NOT EXISTS category(name text)");
         //     console.error("There was an error copying the database: " + error);
         //     db = $cordovaSQLite.openDB("document.db");
         // });
+
+       
+
 
         });
 

@@ -1,4 +1,4 @@
-<ion-view title="Risk Assessment">
+<ion-view title="Risk Assessment" ng-init="Initialize()">
 <!-- //https://github.com/dangrossman/bootstrap-daterangepicker/blob/master/website/index.html -->
 <ion-nav-buttons side="right">
 </ion-nav-buttons>
@@ -102,9 +102,12 @@
       <div class="input-label">
         Managers
       </div>
-      <select ng-model="report.managers"  class="form-control" > 
-        <option  ng-repeat="manager in managers track by $index" value="{{manager}}">{{manager.managerName}}</option> 
-      </select>
+   <!--    <select  ng-model="report.managers"  class="form-control" > 
+        <option   ng-repeat="managers in managers track by $index" value="{{managers}}">{{managers}}</option> 
+      </select> -->
+      <select ng-options="manager.name for manager in managers" ng-model="something">
+          <option   value="{{manager}}">{{manager}}</option> 
+<select>
     </label>
   </div>
 
