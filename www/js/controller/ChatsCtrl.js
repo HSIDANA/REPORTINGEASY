@@ -1,6 +1,6 @@
 // inspired by https://www.airpair.com/ionic-framework/posts/ionic-firebase-camera-app
 angular.module('starter.chatsctrl', [])
-.controller('ChatsCtrl', function($scope, $http,$firebaseArray, $cordovaCamera, $ionicHistory, $ionicActionSheet ) {
+.controller('ChatsCtrl', function($scope, $http,$localStorage,$firebaseArray, $cordovaCamera, $ionicHistory, $ionicActionSheet ) {
 
 $ionicHistory.clearHistory();
 
@@ -34,8 +34,24 @@ $ionicHistory.clearHistory();
         //     targetHeight: 500,
         //     saveToPhotoAlbum: false
         // };
+$scope.$storage = $localStorage.$default({ data:[]});
 
-  $scope.upload = function() {
+    $scope.upload = function() 
+    {
+        navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL }); 
+
+      function onSuccess(imageData) {
+        var image = document.getElementById('myImage');
+        image.src ="data:image/jpeg;base64," + imageData;       
+    }
+
+    function onFail(message) {
+        alert('Failed because: ' + message);
+    }       
+
+};
+  $scope.upload3 = function() {
 
         navigator.camera.getPicture(onSuccess, onFail,
             {
