@@ -76,36 +76,7 @@ $ionicHistory.clearHistory();
       saveToPhotoAlbum: false
     };
 
-    $cordovaCamera.getPicture(options).then(function(fileURL) {
-      //This doesn't work when using --livereload
-      $scope.report.imgURI = fileURL;
-
-      //Do we need to decode the file? - maybe for android?
-      // var convertedFileURL = $base64.decode(fileURL);
-      console.log("Posting image: " + fileURL);
-
-      //Upload the image here!
-      ReportService.uploadImage(fileURL)
-      .then(function(data) {
-        //This isn't returning valid JSON!!!! ARGGGGG!!!
-        console.log("Controller success: " + data.response);
-        $scope.report.media_id = data.response
-        console.log("media id: " + $scope.report.media_id);
-
-
-      },
-      function(data) {
-        console.log("contorller Error");
-        //Display error message
-        var alertPopup = $ionicPopup.alert({
-          title: 'Error!',
-          template: "Could not upload your Media."
-        });
-      });
-
-    }, function(err) {
-            //TODO: Display Error
-        });
+  
   };
 
 //         $scope.upload = function(){
