@@ -1,5 +1,6 @@
+// inspired by https://www.airpair.com/ionic-framework/posts/ionic-firebase-camera-app
 angular.module('starter.chatsctrl', [])
-.controller('ChatsCtrl', function($scope, $http,$firebaseArray, $ionicHistory ) {
+.controller('ChatsCtrl', function($scope, $http,$firebaseArray, $cordovaCamera, $ionicHistory ) {
 
 $ionicHistory.clearHistory();
 
