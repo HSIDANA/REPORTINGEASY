@@ -22,26 +22,39 @@ $ionicHistory.clearHistory();
     alert(syncArray);
         $scope.images = syncArray;
       }
-           $scope.upload = function() {
-        var options = {
-            quality : 75,
-            destinationType : Camera.DestinationType.DATA_URL,
-            sourceType : Camera.PictureSourceType.CAMERA,
-            allowEdit : true,
-            encodingType: Camera.EncodingType.JPEG,
-            popoverOptions: CameraPopoverOptions,
-            targetWidth: 500,
-            targetHeight: 500,
-            saveToPhotoAlbum: false
-        };
-        $cordovaCamera.getPicture(options).then(function(imageData) {
-            syncArray.$add({image: imageData}).then(function() {
-                alert("Image has been uploaded");
-            });
-        }, function(error) {
-            console.error(error);
-        });
-    }
+        //    $scope.upload = function() {
+        // var options = {
+        //     quality : 75,
+        //     destinationType : Camera.DestinationType.DATA_URL,
+        //     sourceType : Camera.PictureSourceType.CAMERA,
+        //     allowEdit : true,
+        //     encodingType: Camera.EncodingType.JPEG,
+        //     popoverOptions: CameraPopoverOptions,
+        //     targetWidth: 500,
+        //     targetHeight: 500,
+        //     saveToPhotoAlbum: false
+        // };
+        $scope.upload = function(){
+            alert("here");
+    Camera.getPicture({
+        sourceType:0,       //photo album,
+        destinationType:1,  //file URI
+        saveToPhotoAlbum:false,
+        correctOrientation:true
+    }).then(function(imageURI) {
+        $scope.imageURI = imageURI; //THIS ONLY WORKS SOMETIMES
+    }, function(err) {
+        alert('An error has occured');
+    });
+};
+    //     $cordovaCamera.getPicture(options).then(function(imageData) {
+    //         syncArray.$add({image: imageData}).then(function() {
+    //             alert("Image has been uploaded");
+    //         });
+    //     }, function(error) {
+    //         console.error(error);
+    //     });
+    // }
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
