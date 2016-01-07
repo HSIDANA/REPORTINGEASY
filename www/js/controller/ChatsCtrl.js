@@ -1,6 +1,6 @@
 // inspired by https://www.airpair.com/ionic-framework/posts/ionic-firebase-camera-app
 angular.module('starter.chatsctrl', [])
-.controller('ChatsCtrl', function($scope, $http,$localStorage,$firebaseArray, $cordovaCamera, $ionicHistory, $ionicActionSheet ) {
+.controller('ChatsCtrl', function($scope, $http,$firebaseArray, $cordovaCamera, $ionicHistory, $ionicActionSheet ) {
 
 $ionicHistory.clearHistory();
 
@@ -34,7 +34,6 @@ $ionicHistory.clearHistory();
         //     targetHeight: 500,
         //     saveToPhotoAlbum: false
         // };
-$scope.$storage = $localStorage.$default({ data:[]});
 
     $scope.upload = function() 
     {
