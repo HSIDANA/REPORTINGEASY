@@ -35,8 +35,9 @@ $ionicHistory.clearHistory();
         //     saveToPhotoAlbum: false
         // };
 
-document.addEventListener("deviceready", function () {
+
   $scope.upload = function () {
+    alert("h");
     var options = {
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
       targetWidth: 1000,
@@ -49,8 +50,8 @@ document.addEventListener("deviceready", function () {
       }, function (error) {
         console.log(error);
       })
-  }
-});
+  };
+
 
   $scope.upload1 = function(){
     //Deal with library vs camera
