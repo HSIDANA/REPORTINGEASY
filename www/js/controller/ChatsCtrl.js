@@ -1,6 +1,6 @@
 // inspired by https://www.airpair.com/ionic-framework/posts/ionic-firebase-camera-app
 angular.module('starter.chatsctrl', [])
-.controller('ChatsCtrl', function($scope, $http,$firebaseArray, $cordovaCamera, $ionicHistory ) {
+.controller('ChatsCtrl', function($scope, $http,$firebaseArray, $cordovaCamera, $ionicHistory, $ionicActionSheet ) {
 
 $ionicHistory.clearHistory();
 
@@ -34,19 +34,92 @@ $ionicHistory.clearHistory();
         //     targetHeight: 500,
         //     saveToPhotoAlbum: false
         // };
-        $scope.upload = function(){
-            alert("here");
-    Camera.getPicture({
-        sourceType:0,       //photo album,
-        destinationType:1,  //file URI
-        saveToPhotoAlbum:false,
-        correctOrientation:true
-    }).then(function(imageURI) {
-        $scope.imageURI = imageURI; //THIS ONLY WORKS SOMETIMES
+
+  $scope.upload = function(){
+    //Deal with library vs camera
+    // ReportService.uploadImage($scope.imageData);
+    // return;
+    var cameraSheet = $ionicActionSheet.show({
+      buttons: 
+      [
+      { text: 'Library'},
+      { text: 'Camera'}
+      ],
+      cancelText: 'Cancel',
+      cancel: function() {
+              // add cancel code..
+            },
+            buttonClicked: function(index) {
+              //Ask user for library or camera
+              if (index === 0) {
+                presentCamera(Camera.PictureSourceType.PHOTOLIBRARY);
+              }
+              else {
+                presentCamera(Camera.PictureSourceType.CAMERA);
+              }
+              return true;
+            }
+          })
+  };
+ 
+  presentCamera = function (cameraType) {
+
+    var options = { 
+      quality : 75, 
+      destinationType : Camera.DestinationType.FILE_URI, 
+      sourceType : cameraType, 
+      allowEdit : false,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 500,
+      targetHeight: 500,
+      popoverOptions: CameraPopoverOptions,
+      saveToPhotoAlbum: false
+    };
+
+    $cordovaCamera.getPicture(options).then(function(fileURL) {
+      //This doesn't work when using --livereload
+      $scope.report.imgURI = fileURL;
+
+      //Do we need to decode the file? - maybe for android?
+      // var convertedFileURL = $base64.decode(fileURL);
+      console.log("Posting image: " + fileURL);
+
+      //Upload the image here!
+      ReportService.uploadImage(fileURL)
+      .then(function(data) {
+        //This isn't returning valid JSON!!!! ARGGGGG!!!
+        console.log("Controller success: " + data.response);
+        $scope.report.media_id = data.response
+        console.log("media id: " + $scope.report.media_id);
+
+
+      },
+      function(data) {
+        console.log("contorller Error");
+        //Display error message
+        var alertPopup = $ionicPopup.alert({
+          title: 'Error!',
+          template: "Could not upload your Media."
+        });
+      });
+
     }, function(err) {
-        alert('An error has occured');
-    });
-};
+            //TODO: Display Error
+        });
+  };
+
+//         $scope.upload = function(){
+//     Camera.getPicture({
+//         sourceType:0,       //photo album,
+//         destinationType:1,  //file URI
+//         saveToPhotoAlbum:false,
+//         correctOrientation:true
+//     }).then(function(imageURI) {
+//         $scope.imageURI = imageURI; //THIS ONLY WORKS SOMETIMES
+//     }, function(err) {
+//         alert('An error has occured');
+//     });
+// };
     //     $cordovaCamera.getPicture(options).then(function(imageData) {
     //         syncArray.$add({image: imageData}).then(function() {
     //             alert("Image has been uploaded");
