@@ -52,9 +52,11 @@ $ionicHistory.clearHistory();
             buttonClicked: function(index) {
               //Ask user for library or camera
               if (index === 0) {
+                alert("in1");
                 presentCamera(Camera.PictureSourceType.PHOTOLIBRARY);
               }
               else {
+                alert("in2");
                 presentCamera(Camera.PictureSourceType.CAMERA);
               }
               return true;
