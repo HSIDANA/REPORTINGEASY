@@ -39,8 +39,9 @@ $ionicHistory.clearHistory();
     {
         navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
             destinationType: Camera.DestinationType.DATA_URL }); 
-
+alert("l");
       function onSuccess(imageData) {
+        alert("mk");
         var image = document.getElementById('myImage');
         image.src ="data:image/jpeg;base64," + imageData;       
     }
