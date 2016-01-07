@@ -63,7 +63,7 @@ $ionicHistory.clearHistory();
   };
  
   presentCamera = function (cameraType) {
-
+alert("in");
     var options = { 
       quality : 75, 
       destinationType : Camera.DestinationType.FILE_URI, 
