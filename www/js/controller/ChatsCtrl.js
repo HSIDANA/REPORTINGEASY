@@ -54,6 +54,7 @@ $ionicHistory.clearHistory();
               if (index === 0) {
                 alert("in1");
                 presentCamera(Camera.PictureSourceType.PHOTOLIBRARY);
+                alert(err);
               }
               else {
                 alert("in2");
