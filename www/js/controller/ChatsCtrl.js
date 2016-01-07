@@ -35,7 +35,24 @@ $ionicHistory.clearHistory();
         //     saveToPhotoAlbum: false
         // };
 
-  $scope.upload = function(){
+document.addEventListener("deviceready", function () {
+  $scope.upload = function () {
+    var options = {
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      targetWidth: 1000,
+      targetHeight: 1000,
+      allowEdit: true
+    };
+    $cordovaCamera.getPicture(options)
+      .then(function (imageURI) {
+        $scope.postData.imageUri = imageURI;
+      }, function (error) {
+        console.log(error);
+      })
+  }
+});
+
+  $scope.upload1 = function(){
     //Deal with library vs camera
     // ReportService.uploadImage($scope.imageData);
     // return;
