@@ -35,8 +35,32 @@ $ionicHistory.clearHistory();
         //     saveToPhotoAlbum: false
         // };
 
+  $scope.upload = function() {
 
-  $scope.upload = function () {
+        navigator.camera.getPicture(onSuccess, onFail,
+            {
+              alert("getin");
+                sourceType : Camera.PictureSourceType.CAMERA,
+                correctOrientation: true,
+                quality: 75,
+                targetWidth: 200,
+                destinationType: Camera.DestinationType.DATA_URL,
+                encodingType: Camera.EncodingType.PNG,
+                saveToPhotoAlbum:false
+            });
+        function onSuccess(imageData) {
+          alert("success");
+            $scope.user.picture = "data:image/png;base64," + imageData;
+            $scope.$apply();
+        }
+
+        function onFail(message) {
+            if (appConstants.debug) {
+                alert('Failed because: ' + message);
+            }
+        }
+    };
+  $scope.upload2 = function () {
     alert("h");
     var options = {
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
