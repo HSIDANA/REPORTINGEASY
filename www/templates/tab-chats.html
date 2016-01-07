@@ -76,7 +76,7 @@
 </div>
     <!-- TODO: Proper loading and callbacks - perhaps we should load the image once the user has added it? -->
     <button id="no-margin-bottom" class="button button-outline button-block button-positive" ng-click="ShowPictures()">Add Image</button>
-    <button class="button button-icon icon ion-camera" ng-click="upload()"></button>
+    <button class="button button-icon icon ion-camera" ng-click="getPhoto()"></button>
     <img data-ng-src="{{incident.imgURI}}" class="center" style="max-width: 100%" ng-show="displayImage()">
 
     <!-- Location Buttons -->

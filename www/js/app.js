@@ -20,7 +20,7 @@ angular.module('starter', ['ionic','starter.logincontroller',
         'starter.admindatactrl',
             'starter.admindutiesctrl',
             'firebase',
-          'starter.authservice',
+          'starter.services',
             
   'ngCordova'])
 
