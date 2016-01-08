@@ -11,6 +11,7 @@ angular.module('starter', ['ionic','starter.logincontroller',
   'starter.accountctrl',
   'starter.auditctrl',
   'starter.chatdetailctrl',
+    'starter.cameractrl',
   'starter.chatsctrl',
   'starter.dashctrl',
   'starter.meetingsctrl',
@@ -179,7 +180,15 @@ $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
     templateUrl: 'templates/adminduties.html',
     controller: 'AdminDutiesCtrl'
   }) 
-
+  .state('tab.camera', {
+      url: '/camera',
+      views: {
+        'tab-camera': {
+          templateUrl: 'templates/tab-camera.html',
+          controller: 'CameraCtrl'
+        }
+      }
+    })
 
 .state('login', {
     url:'/login',

@@ -1,91 +1,117 @@
-     
+<ion-view title="Incident Investigation" ng-init="Initialize1()">
+<ion-nav-buttons side="right">
+</ion-nav-buttons>
 
-
-
-
-<ion-view title="Report Incident">
 <ion-content padding="true">
-<!-- <form> -->
 
-<div class="list list-inset">
-
-  <label class="item item-input item-select">
-    <div class="input-label">
-      Category
-    </div>
-    <!-- TODO: Load Dynamically -->
-    <select> 
-      <option value="1">Fire</option>
-      <option value="2">Accident</option>
-      <option value="3">Property Damage</option>
-      <option value="4">Theft</option>
-      <option value="5">Other</option>
-    </select>
-  </label>
-  <label class="item item-input item-select">
-    <div class="input-label">
-      Sub-Category
-    </div>
-    <!-- TODO: Load Dynamically - only once user has selected cateogory -->
-    <select> 
-      <option value="1">Fire</option>
-      <option value="2">Accident</option>
-      <option value="3">Property Damage</option>
-      <option value="4">Theft</option>
-      <option value="5">Other</option>
-    </select>
-  </label>
-
-  <label class="item item-input">
-    <textarea placeholder="Description"></textarea>
-  </label>
-<!--
-     <button >Select Picture</button>
-          <img ng-src="ImageURI" id="smallimage">
-          <input type="text" ng-model="ImageURI" size="30"/>
--->
-  <!-- TODO: Proper loading and callbacks - perhaps we should load the image once the user has added it? -->
-  <button class="button button-outline button-block button-positive" ng-click="ShowPictures()">Add Image</button>
-  <button class="button button-outline button-block button-positive">Add Location</button>
-  <button class="button button-outline button-block button-positive">Add Time</button>
-
-  <br>
-    <button class="button button-block button-positive" ng-click=submit()>Submit</button>
-</div>
-</div>
-
- <!--  <div class="wrapper" id ="rcorners3"  style = "padding-bottom: 10px;"> 
-   <div class="col"  style = "padding-bottom: 10px;">
-    <select class="ion-input-select"   style = "padding-bottom: 10px;">
-      <option value="" disabled selected>Category of Incident</option>
-      <option value="1">Fire</option>
-      <option value="2">Accident</option>
-      <option value="3">Property Damage</option>
-      <option value="4">Theft</option>
-      <option value="5">None of These</option>
-    </select>
-
-
-    <div class="row"  style = "padding-bottom: 10px;">
-      <label class="item item-input"  style = "padding-bottom: 10px;">
-        <input type="text" placeholder="Title">
-      </div>
+<div class="max-width ">
+  <div class="list no-margin-top">
+<div class ="col">
+    <label class="item item-input">
+      <textarea placeholder="Family Name" ng-model="incident.familyName"></textarea>
     </label>
-    <div class="row" >
-      <label class="item item-input">
-        <input type="text" placeholder="Description">
-      </label>
-    </div>
-    <br><br>
+</div>
 
-    <div class="row" >
-     <button class="button button-dark" >Add Image</button>
-   </div>
-   <div class="row" align="center">
-    <button class="button button-dark" >Add Location</button>
+<div class = "col">
+    <label class="item item-input">
+
+      <span class="input-label">Incident Date</span>
+      <!-- This was making report.date null for some reason. TODO: fix -->
+      <!-- TODO: ADD validation here - not max & min -->
+      <input type="datetime-local" ng-model="incident.date" value="{{date | date:'mediumTime'}}">
+      <!-- <input type="datetime-local" ng-model="report.date" max="{{maxDateTimeString}}" min="{{minDateTimeString}}" value="{{date | date:'mediumTime'}}"> -->
+
+    </label>
+</div>
+
+
+
+    <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Incident
+      </div>
+      <select ng-model="report.incident"  class="form-control" > 
+        <option  ng-repeat="incident in incidents track by $index" value="{{incident}}">{{incident.incidentName}}</option> 
+      </select>
+    </label>
   </div>
-  <div class="row" align="center">
-    <button  class="button button-dark">Cureent Time</button>
-  </div> 
-</div> -->
+
+    <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Incident Type
+      </div>
+      <select ng-model="report.incidentType"  class="form-control" > 
+        <option  ng-repeat="type in types track by $index" value="{{type}}">{{type.typeName}}</option> 
+      </select>
+    </label>
+  </div>
+
+      <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Incident Location
+      </div>
+      <select ng-model="report.location"  class="form-control" > 
+        <option  ng-repeat="location in location track by $index" value="{{location}}">{{location.departmentName}}</option> 
+      </select>
+    </label>
+  </div>
+
+<!--
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Sub-Category
+      </div>
+      <select  ng-model="incident.subcategory" class="form-control" > 
+        <option ng-repeat="subcategory in subcategories" value="{{subcategory}}">{{subcategory.subcategoryName}}</option>
+      </select>
+    </label>
+-->
+<div class ="col">
+    <label class="item item-input">
+      <textarea placeholder="Description" ng-model="incident.description"></textarea>
+    </label>
+</div>
+    <!-- TODO: Proper loading and callbacks - perhaps we should load the image once the user has added it? -->
+    <button id="no-margin-bottom" class="button button-outline button-block button-positive" ng-click="ShowPictures()">Add Image</button>
+    <button class="button button-icon icon ion-camera" ng-click="getPhoto()"></button>
+    <img data-ng-src="{{incident.imgURI}}" class="center" style="max-width: 100%" ng-show="displayImage()">
+  <button class="button button-outline button-block button-positive" ng-click="ShowPictures()">Add Image</button>
+  
+    <!-- Location Buttons -->
+    <div class = "row no-padding">
+      <!-- TODO: fix - no-padding-left and right not working. -->
+      <div class = "col no-padding-left" style="padding-left: 0px">
+        <button class="button button-outline button-block button-positive" ng-click = "ShowLocation()">
+          <i class="ion-pinpoint icon-large"> My Location</i>
+        </button>
+      </div>
+      <div class = "col">
+        <button class="button button-outline button-block button-positive" ng-click="openModal()">
+          <i class="ion-pin icon-large"> Edit</i>
+        </button>
+      </div>
+      <!-- <div class = "col no-padding-right" style="padding-right: 0px">
+        <button class="button button-outline button-block button-positive" ng-click="imageLocation()">
+          <i class="ion-images icon-large"> From Image</i>
+        </button> 
+      </div> -->
+    </div>
+
+
+    <ion-item class="no-padding" scroll="false">
+
+    <map class="map-small" data-tap-disable="true" draggable="false" zoomControl="false" center="{{incident.coords.latitude}},{{incident.coords.longitude}}" zoom="16" disable-default-u-i="true">
+      <marker position="{{incident.coords.latitude}},{{incident.coords.longitude}}"></marker>
+    </map>
+  </ion-item>
+
+  <button class="button button-block button-positive" ng-click="submit()">Submit</button>
+  <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button>
+</div>
+</div>
+</ion-content>
+
 
