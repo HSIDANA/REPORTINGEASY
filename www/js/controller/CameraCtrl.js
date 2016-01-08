@@ -1,5 +1,5 @@
 
-angular.module('starter.cameractrl', [])
+angular.module('starter.cameractrl', ['ngCordova'])
 .controller('CameraCtrl', function($scope, $cordovaCamera) {
 	var options = {
     quality : 75,
