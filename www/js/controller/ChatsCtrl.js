@@ -2,7 +2,12 @@
 angular.module('starter.chatsctrl', [])
 .controller('ChatsCtrl', function($scope, Camera, $http,$firebaseArray, $cordovaCamera, $ionicHistory, $ionicActionSheet ) {
 
-$ionicHistory.clearHistory();
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
+   $scope.myHome = function() {
+ $location.path( '/login');
+  };
 
     $scope.images = [];
  var ref = new Firebase("https://mysafe.firebaseio.com/");

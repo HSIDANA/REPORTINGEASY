@@ -1,6 +1,9 @@
 
 angular.module('starter.cameractrl', ['ngCordova'])
 .controller('CameraCtrl', function($scope, $cordovaCamera) {
+    $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
 	var options = {
     quality : 75,
     destinationType : Camera.DestinationType.DATA_URL,

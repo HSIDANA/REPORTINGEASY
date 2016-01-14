@@ -1,8 +1,13 @@
 
 angular.module('starter.auditctrl', [])
 
-.controller('AuditCtrl', function($scope, $state, $location,$ionicPopup, $http, $ionicModal) {
-  
+.controller('AuditCtrl', function($scope, $state, $location,$ionicPopup, $http, $ionicModal, $ionicHistory) {
+    $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
+   $scope.myHome = function() {
+ $location.path( '/login');
+  };
 
 $http.get('js/resources/department.js').success(function (results) {
 		//$scope.categories = results.categories;

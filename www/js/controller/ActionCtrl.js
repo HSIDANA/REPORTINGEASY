@@ -1,7 +1,9 @@
 angular.module('starter.actioncontroller', ['ionic-datepicker'])
 
-.controller('ActionCtrl', function($scope, $http) {
-
+.controller('ActionCtrl', function($scope, $http, $ionicHistory) {
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
 
 /*
   Dropdown with Multiple checkbox select with jQuery - May 27, 2013

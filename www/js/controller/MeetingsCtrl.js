@@ -1,6 +1,11 @@
 angular.module('starter.meetingsctrl', [])
-.controller('MeetingsCtrl', function($scope, $location,$ionicPopup, $http) {
-
+.controller('MeetingsCtrl', function($scope, $location,$ionicPopup, $http, $ionicHistory) {
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
+   $scope.myHome = function() {
+ $location.path( '/login');
+  };
 
   $http.get('js/resources/department.js').success(function (results) {
 

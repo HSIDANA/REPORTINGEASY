@@ -1,6 +1,6 @@
 angular.module('starter.riskreportcontroller', ['ionic-datepicker'])
 
-.controller('RiskReportController', function($scope, $http) {
+.controller('RiskReportController', function($scope, $http, $ionicHistory) {
 
 
 

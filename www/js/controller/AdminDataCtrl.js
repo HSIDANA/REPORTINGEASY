@@ -1,7 +1,10 @@
 angular.module('starter.admindatactrl', [])
 
-.controller('AdminDataCtrl', function($scope, $firebase) {
+.controller('AdminDataCtrl', function($scope, $firebase, $ionicHistory) {
 
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
  var ref = new Firebase("https://mysafe.firebaseio.com/");
    ref.authWithPassword({
   "email": "s.harshita.89@gmail.com",
@@ -24,7 +27,8 @@ $scope.manager = "";
 var usersRef = ref.child("managers");
 usersRef.push({
 
-    name: manager
+    name: manager,
+  
   }
 );
 }

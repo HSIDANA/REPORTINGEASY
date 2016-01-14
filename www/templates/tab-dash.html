@@ -1,10 +1,20 @@
-<ion-view title="Risk Assessment" ng-init="Initialize()">
+
+
+<ion-view title="Risk Assessment" ng-init="Initialize()" cache-view="false">
 <!-- //https://github.com/dangrossman/bootstrap-daterangepicker/blob/master/website/index.html -->
+
+
+<ion-nav-buttons side="left">
+ <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" ></i> Back</button>
+</ion-nav-buttons>
+
 <ion-nav-buttons side="right">
+ <button class="button button-clear icon ion-home" ng-click="myHome()"></button>
 </ion-nav-buttons>
 
 <ion-content padding="true">
 <div class="max-width ">
+
   <div class="list no-margin-top">
 <!--     <button class = "button" ng-click = "insert()">Insert</button>
     <button class = "button" ng-click = "select('Nic')">Select</button> -->
@@ -221,6 +231,9 @@
 
         <button class="button button-block button-positive" ng-click="submit()">Submit</button>
         <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button>
+          <!--  <button class="button-clear" ng-click="myGoBack()">Back</button> -->
+   
+  
       </div>
     </div>
   </ion-content>

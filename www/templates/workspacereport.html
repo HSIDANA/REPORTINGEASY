@@ -1,0 +1,92 @@
+<ion-view title="Workspace Report" ng-init="Initialize4()">
+<ion-nav-buttons side="right">
+</ion-nav-buttons>
+
+<ion-content padding="true" overflow-scroll="true">
+<form name="myForm1">
+<div class="max-width ">
+  <div class="list no-margin-top">
+
+<div data-tap-disabled="true"> </div>
+  <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Plant/Department
+      </div>
+   <!--    <select  ng-model="report.managers"  class="form-control" > 
+        <option   ng-repeat="managers in managers track by $index" value="{{managers}}">{{managers}}</option> 
+      </select> -->
+      <select ng-options="plant for plant in plants" ng-model="data.option"  required>
+          <option   value="{{plant}}">{{plant}}</option> 
+<select>
+    </label>
+  </div>
+
+    <div class = "row">
+  <!--     <div class = "col">
+       <button class="button button-block button-positive"> 
+    Select RA Raised date range</button>
+      </div> -->
+        <div class = "col">
+<ionic-datepicker input-obj="datepickerObject">
+  <button class="button button-block button-positive" ng-model = "data.date1"> 
+    
+    {{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}</button>
+</ionic-datepicker></div>
+
+<div class = "col">
+
+<ionic-datepicker input-obj="datepickerObject1">
+  <button class="button button-block button-positive" ng-model = "data.date2"> 
+     {{datepickerObject1.inputDate | date:'dd - MMMM - yyyy'}}</button>
+</ionic-datepicker>
+</div></div>
+<button class="button button-block button-positive"  ng-click="submit()">Submit</button>
+
+
+</div>
+</div>
+
+<!-- <button class="button button-assertive" ng-click="exportToExcel('table1')">
+   download
+</button> -->
+<!-- <a class="btn btn-primary" ng-mousedown="csv.generate()" ng-href="{{ csv.link() }}" download="myreport.csv">Export</a>
+<table ng-table="tableParams" show-filter="false" class="table" export-csv="csv">
+  <tr ng-repeat="data in ctrl" height="10px">
+    <td data-title="'Inspector'">{{data}}</td>
+  </tr>
+</table> -->
+ <table width="100%"  ng-show="(ctrl | filter:criteria).length">
+        <thead >
+            <tr>
+                <th>Inspector</th>
+                <th>INSPECTION ID</th>
+                <th>PLANT NAME</th>
+                <th>DATE</th>
+                <th>ACTIONS</th>
+
+            </tr>
+        </thead>
+      
+
+        <tbody>
+            <tr ng-repeat="data in ctrl | filter:criteria">
+                 <td>{{data.INSPECTOR}}</td>
+                <td>{{data.KEY}}</td>
+                <td>{{data.PLANT}}</td>
+                <td>{{data.DATE}}</td>
+                <td>{{data.ACTIONS}}</td>
+           </tr>
+            </tr>
+        </tbody>
+    </table>
+  </br>
+
+
+   <button ng-click="saveAsXlsx()" >Save as XLSX</button>
+
+</div></div>
+</form>
+  </ion-content>
+
+

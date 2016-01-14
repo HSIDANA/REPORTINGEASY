@@ -1,0 +1,128 @@
+<ion-view title="Workspace Inspection" ng-init="Initialize3()" cache-view="false">
+<ion-nav-buttons side="left">
+ <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" ></i> Back</button>
+</ion-nav-buttons>
+
+<ion-nav-buttons side="right">
+ <button class="button button-clear icon ion-home" ng-click="myHome()"></button>
+</ion-nav-buttons>
+
+<ion-content padding="true">
+<form name="myForm">
+
+<div class="max-width ">
+  <div class="list no-margin-top">
+
+<!-- <div class = "col">
+    <label class="item item-input">
+
+      <span class="input-label">Inspection Date</span>
+      <!-- This was making report.date null for some reason. TODO: fix 
+      <!-- TODO: ADD validation here - not max & min 
+      <input type="datetime-local" ng-model="data.date" value="{{date | date:'mediumTime'}}" >
+    <input type="datetime-local" ng-model="report.date" max="{{maxDateTimeString}}" min="{{minDateTimeString}}" value="{{date | date:'mediumTime'}}"> 
+
+    </label>
+
+  </div> -->
+
+  <div class = "col">
+    <label class="item item-input">
+
+      <span class="input-label">Inspection Date</span>
+
+<input type="date" id="FromDate" name="FromDate" 
+      value="{{d }}" ng-model="data.date" class="date" />
+</div>
+     <div class = "col">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Plant/Department
+      </div>
+   <!--    <select  ng-model="report.managers"  class="form-control" > 
+        <option   ng-repeat="managers in managers track by $index" value="{{managers}}">{{managers}}</option> 
+      </select> -->
+      <select ng-options="department for department in departments" ng-model="data.optionSelected"  required>
+          <option   value="{{department}}">{{department}}</option> 
+<select>
+    </label>
+  </div>
+  
+
+<!--
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Sub-Category
+      </div>
+      <select  ng-model="incident.subcategory" class="form-control" > 
+        <option ng-repeat="subcategory in subcategories" value="{{subcategory}}">{{subcategory.subcategoryName}}</option>
+      </select>
+    </label>
+-->
+<div class ="col">
+    <label class="item item-input">
+      <textarea placeholder="Inspector" name = "desc" ng-pattern="/^[a-zA-Z\s]*$/" ng-messages="myForm.desc.$error" ng-model="data.description" required></textarea>
+    </label></div>
+<div ng-messages="myForm.description.$error">
+  <div ng-message="required">This field is required</div>
+  <div ng-message="pattern">Must be a valid 10 digit phone number</div>
+</div>
+<!-- <div class ="row">
+  <div class = "col" style="padding-left: 10px">
+<ion-radio ng-model="choiceWorkSpace">Add Action</ion-radio></div>
+<div class = "col" style="right: 0px">
+<ion-radio ng-model="choiceWorkSpace" >No Action Required</ion-radio></div></div> -->
+
+  
+   <ion-radio ng-repeat="item in choice"
+                 ng-value="item.value"
+                 ng-change="choiceChanged(item)"
+                 ng-checked="item.selected"
+                 ng-model="choiceWorkSpace" >
+        <div class ="row" >  
+          {{ item.text }}
+</div>
+      </ion-radio>
+
+
+    <!-- TODO: Proper loading and callbacks - perhaps we should load the image once the user has added it? -->
+    <button id="no-margin-bottom" class="button button-outline button-block button-positive" ng-click="ShowPictures()">Add Image</button>
+    <img data-ng-src="{{inspection.imgURI}}" class="center" style="max-width: 100%" ng-show="displayImage()">
+
+    <!-- Location Buttons -->
+    <div class = "row">
+      <!-- TODO: fix - no-padding-left and right not working. -->
+      <div class = "col" style="padding-left: 10px">
+        <button class="button button-outline button-block button-positive" ng-click = "ShowLocation()">
+          <i class="ion-pinpoint icon-large"> My Location</i>
+        </button>
+      </div>
+      <div class = "col" style="padding-right: 0px">
+        <button class="button button-outline button-block button-positive" ng-click="openModal()">
+          <i class="ion-pin icon-large"> Edit</i>
+        </button>
+      </div>
+      <!-- <div class = "col no-padding-right" style="padding-right: 0px">
+        <button class="button button-outline button-block button-positive" ng-click="imageLocation()">
+          <i class="ion-images icon-large"> From Image</i>
+        </button> 
+      </div> -->
+    </div>
+<!-- incident ===== inspection -->
+
+ <!--    <ion-item class="no-padding" scroll="false">
+
+    <map class="map-small" data-tap-disable="true" draggable="false" zoomControl="false" center="{{inspection.coords.latitude}},{{inspection.coords.longitude}}" zoom="16" disable-default-u-i="true">
+      <marker position="{{inspection.coords.latitude}},{{inspection.coords.longitude}}"></marker>
+    </map>
+  </ion-item> -->
+
+
+  <button class="button button-block button-positive"  ng-disabled="myForm.$invalid" ng-click="submit()">Submit</button>
+  <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button>
+</form>
+</div>
+</div>
+</ion-content>
+
+

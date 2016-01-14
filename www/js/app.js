@@ -8,7 +8,7 @@
 var db;
 var fb = null;// can be used in any controller - this var is globally accessible
 angular.module('starter', ['ionic','starter.logincontroller',
-  'starter.accountctrl',
+  'starter.workspacectrl',
   'starter.auditctrl',
   'starter.chatdetailctrl',
     'starter.cameractrl',
@@ -22,8 +22,8 @@ angular.module('starter', ['ionic','starter.logincontroller',
             'starter.admindutiesctrl',
             'firebase',
           'starter.services',
-            
-  'ngCordova'])
+              'starter.workspacereportctrl',
+  'ngCordova','ngMessages','ngCsv', 'ngSanitize'])
 
 
   .run(function($ionicPlatform, $cordovaSQLite,  $rootScope ,$firebaseObject) {
@@ -126,14 +126,22 @@ $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.workspace', {
+    url: '/workspace',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-workspace': {
+        templateUrl: 'templates/tab-workspace.html',
+        controller: 'WorkspaceCtrl'
       }
     }
+  })
+
+    .state('workspacereport', {
+    url: '/workspacereport',
+ 
+        templateUrl: 'templates/workspacereport.html',
+        controller: 'workspaceReportCtrl'
+ 
   })
     .state('tab.audit', {
     url: '/audit',

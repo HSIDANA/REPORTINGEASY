@@ -1,5 +1,13 @@
 angular.module('starter.dashctrl', [])
-.controller('DashCtrl', function($scope, $state, $location,$cordovaCamera, $ionicPopup, $http, $ionicModal, $firebase, $firebaseArray) {
+.controller('DashCtrl', function($scope, $state, $location,$cordovaCamera, $ionicPopup, $http, $ionicModal, $firebase, $firebaseArray, $ionicHistory) {
+
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
+
+   $scope.myHome = function() {
+ $location.path( '/login');
+  };
 
 
  // $scope.myBirthday = new Date(1968, 10, 26);
@@ -29,13 +37,13 @@ angular.module('starter.dashctrl', [])
 
 	// 
  $scope.Initialize = function() {
- var ref = new Firebase("https://mysafe.firebaseio.com/category/");
+ var ref = new Firebase("https://mysafe.firebaseio.com/managers/");
 var typeArray = $firebaseArray(ref);
 
 typeArray.$loaded().then( function (data) {
 	
             $scope.managers = data;
-            alert(data);
+        
         });
 //  var name ;
 //  var manager = [];

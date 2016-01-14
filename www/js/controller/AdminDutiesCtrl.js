@@ -2,7 +2,10 @@
 
 angular.module('starter.admindutiesctrl', [])
 
-.controller('AdminDutiesCtrl', function($scope) {
+.controller('AdminDutiesCtrl', function($scope, $ionicHistory) {
+	  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
   $scope.settings = {
     enableFriends: true
   };
