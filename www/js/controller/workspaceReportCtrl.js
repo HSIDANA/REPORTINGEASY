@@ -145,7 +145,7 @@ array[i] = arr[i].toString();
   { id: '1', name: array[0], status: '123' }, 
   { id: '2', name: array[1], status: '323'}
 ];
-   alasql('SELECT * INTO XLSX("output.xlsx",{headers:true}) FROM ?',[$scope.ctrl]);
+   alasql('SELECT * INTO XLS("output.xlsx",{headers:true}) FROM ?',[$scope.ctrl]);
 }
 
 
