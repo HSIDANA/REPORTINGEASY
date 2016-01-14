@@ -95,7 +95,7 @@ users.$loaded()
     var arr = [];
         var arr1 = [];
     var result = [];
-    $scope.submit = function() {
+    $scope.change = function() {
     var date =   $scope.datepickerObject.inputDate;
     var date1 =  $scope.datepickerObject1.inputDate;
     // alert(date);

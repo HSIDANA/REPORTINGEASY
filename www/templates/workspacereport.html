@@ -6,7 +6,7 @@
 <form name="myForm1">
 <div class="max-width ">
   <div class="list no-margin-top">
-
+<form name = "report_form">
 <div data-tap-disabled="true"> </div>
   <div class = "col">
     <label class="item item-input item-select">
@@ -16,7 +16,7 @@
    <!--    <select  ng-model="report.managers"  class="form-control" > 
         <option   ng-repeat="managers in managers track by $index" value="{{managers}}">{{managers}}</option> 
       </select> -->
-      <select ng-options="plant for plant in plants" ng-model="data.option"  required>
+      <select ng-options="plant for plant in plants" ng-model="data.option"  ng-change="change()" required>
           <option   value="{{plant}}">{{plant}}</option> 
 <select>
     </label>
@@ -41,7 +41,7 @@
      {{datepickerObject1.inputDate | date:'dd - MMMM - yyyy'}}</button>
 </ionic-datepicker>
 </div></div>
-<button class="button button-block button-positive"  ng-click="submit()">Submit</button>
+
 
 
 </div>
@@ -56,7 +56,7 @@
     <td data-title="'Inspector'">{{data}}</td>
   </tr>
 </table> -->
- <table width="100%"  ng-show="(ctrl | filter:criteria).length">
+ <table width="100%"  ng-show="(ctrl | filter:criteria).length" required>
         <thead >
             <tr>
                 <th>Inspector</th>
@@ -83,7 +83,7 @@
   </br>
 
 
-   <button ng-click="saveAsXlsx()" >Save as XLSX</button>
+   <button ng-click="saveAsXlsx()" ng-show="(ctrl | filter:criteria).length"  >Save as Excel</button>
 
 </div></div>
 </form>
