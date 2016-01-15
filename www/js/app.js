@@ -8,10 +8,10 @@
 var db;
 var fb = null;// can be used in any controller - this var is globally accessible
 angular.module('starter', ['ionic','starter.logincontroller',
-  'starter.workspacectrl',
+  'starter.workplacereportctrl',
   'starter.auditctrl',
   'starter.chatdetailctrl',
-    'starter.cameractrl',
+    // 'starter.cameractrl',
   'starter.chatsctrl',
   'starter.dashctrl',
   'starter.meetingsctrl',
@@ -22,7 +22,7 @@ angular.module('starter', ['ionic','starter.logincontroller',
             'starter.admindutiesctrl',
             'firebase',
           'starter.services',
-              'starter.workspacereportctrl',
+              'starter.workplacectrl',
   'ngCordova','ngMessages','ngCsv', 'ngSanitize'])
 
 
@@ -35,20 +35,6 @@ angular.module('starter', ['ionic','starter.logincontroller',
                 StatusBar.styleDefault();
             }
 
-            if(window.cordova)
-            {
-db= $cordovaSQLite.openDB({name : "document.db" }); //device
-// alert("In window");
-
-            }
-else
-{
-  // alert("In other");
-db = window.openDatabase("document.db", '1', 'my', 1024*1024*100); // browser
-$cordovaSQLite.execute(db, "CREATE TABLE  IF NOT EXISTS category(name text)");
-
-
-}
   
 
     // db = $cordovaSQLite.openDB({ name: "document.db"});
@@ -66,6 +52,8 @@ $cordovaSQLite.execute(db, "CREATE TABLE  IF NOT EXISTS category(name text)");
 
 
         });
+        
+
 
 
 
@@ -126,21 +114,21 @@ $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
       }
     })
 
-  .state('tab.workspace', {
-    url: '/workspace',
+  .state('tab.workplace', {
+    url: '/workplace',
     views: {
-      'tab-workspace': {
-        templateUrl: 'templates/tab-workspace.html',
-        controller: 'WorkspaceCtrl'
+      'tab-workplace': {
+        templateUrl: 'templates/tab-workplace.html',
+        controller: 'WorkPlaceCtrl'
       }
     }
   })
 
-    .state('workspacereport', {
-    url: '/workspacereport',
+    .state('workplacereport', {
+    url: '/workplacereport',
  
-        templateUrl: 'templates/workspacereport.html',
-        controller: 'workspaceReportCtrl'
+        templateUrl: 'templates/workplacereport.html',
+        controller: 'WorkPlaceReportCtrl'
  
   })
     .state('tab.audit', {
@@ -188,15 +176,15 @@ $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
     templateUrl: 'templates/adminduties.html',
     controller: 'AdminDutiesCtrl'
   }) 
-  .state('tab.camera', {
-      url: '/camera',
-      views: {
-        'tab-camera': {
-          templateUrl: 'templates/tab-camera.html',
-          controller: 'CameraCtrl'
-        }
-      }
-    })
+  // .state('tab.camera', {
+  //     url: '/camera',
+  //     views: {
+  //       'tab-camera': {
+  //         templateUrl: 'templates/tab-camera.html',
+  //         controller: 'CameraCtrl'
+  //       }
+  //     }
+  //   })
 
 .state('login', {
     url:'/login',

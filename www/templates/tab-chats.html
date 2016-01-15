@@ -1,6 +1,7 @@
-<ion-view title="Incident Investigation" ng-init="Initialize1()" cache-view="false">
+<ion-view title="Safe@Scneider" ng-init="Initialize1()" cache-view="false">
+ <ion-nav-bar class="bar-stable">  </ion-nav-bar>
 <ion-nav-buttons side="left">
- <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" ></i> Back</button>
+ <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" style = "color: green" ></i> </button>
 </ion-nav-buttons>
 
 <ion-nav-buttons side="right">
@@ -11,16 +12,23 @@
 
 <div class="max-width ">
   <div class="list no-margin-top">
+
+          <center><img src = "http://www.defenddemocracy.org/content/uploads/general/Schneider_Electric_Logo.gif"></center>
+
+                <div class="bar bar-balanced">
+  <h1 class="title">Incident Investigation Form</h1>
+</div><br><br><br>
+<form name = "f2">
 <div class ="col">
-    <label class="item item-input">
-      <textarea placeholder="Family Name" ng-model="incident.familyName"></textarea>
+    <label class="item item-input" >
+      <input type = "text" placeholder="Family Name" ng-model="incident.familyName" required>
     </label>
 </div>
 
 <div class = "col">
     <label class="item item-input">
 
-      <span class="input-label">Incident Date</span>
+      <span class="input-label"  style = "color: #29a329; font-size : 14px">Incident Date</span>
       <!-- This was making report.date null for some reason. TODO: fix -->
       <!-- TODO: ADD validation here - not max & min -->
       <input type="datetime-local" ng-model="incident.date" value="{{date | date:'mediumTime'}}">
@@ -33,7 +41,7 @@
 
     <div class = "col">
     <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label"  style = "color: #29a329; font-size : 14px">
         Incident
       </div>
       <select ng-model="report.incident"  class="form-control" > 
@@ -44,7 +52,7 @@
 
     <div class = "col">
     <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label"  style = "color: #29a329; font-size : 14px">
         Incident Type
       </div>
       <select ng-model="report.incidentType"  class="form-control" > 
@@ -55,7 +63,7 @@
 
       <div class = "col">
     <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label"  style = "color: #29a329; font-size : 14px">
         Incident Location
       </div>
       <select ng-model="report.location"  class="form-control" > 
@@ -76,25 +84,25 @@
 -->
 <div class ="col">
     <label class="item item-input">
-      <textarea placeholder="Description" ng-model="incident.description"></textarea>
+      <input type = "text" placeholder="Description" ng-model="incident.description">
     </label>
 </div>
     <!-- TODO: Proper loading and callbacks - perhaps we should load the image once the user has added it? -->
-    <button id="no-margin-bottom" class="button button-outline button-block button-positive" ng-click="ShowPictures()">Add Image</button>
+  <!--   <button id="no-margin-bottom" class="button button-outline button-block button-positive" ng-click="ShowPictures()">Add Image</button> -->
     <button class="button button-icon icon ion-camera" ng-click="getPhoto()"></button>
     <img data-ng-src="{{incident.imgURI}}" class="center" style="max-width: 100%" ng-show="displayImage()">
-  <button class="button button-outline button-block button-positive" ng-click="ShowPictures()">Add Image</button>
+<!--   <button class="button button-outline button-block button-positive" ng-click="ShowPictures()">Add Image</button> -->
   
     <!-- Location Buttons -->
-    <div class = "row no-padding">
+    <div class = "row no-padding" style = "margin-left : 0px">
       <!-- TODO: fix - no-padding-left and right not working. -->
-      <div class = "col no-padding-left" style="padding-left: 0px">
-        <button class="button button-outline button-block button-positive" ng-click = "ShowLocation()">
+      <div class = "col no-padding-left" style = "margin-left : -5px">
+        <button class="button button-outline button-block button-balanced" style = "margin-left : -5px" ng-click = "ShowLocation()">
           <i class="ion-pinpoint icon-large"> My Location</i>
         </button>
       </div>
       <div class = "col">
-        <button class="button button-outline button-block button-positive" ng-click="openModal()">
+        <button class="button button-outline button-block button-balanced" ng-click="openModal()">
           <i class="ion-pin icon-large"> Edit</i>
         </button>
       </div>
@@ -106,15 +114,16 @@
     </div>
 
 
-    <ion-item class="no-padding" scroll="false">
+<!--     <ion-item class="no-padding" scroll="false">
 
     <map class="map-small" data-tap-disable="true" draggable="false" zoomControl="false" center="{{incident.coords.latitude}},{{incident.coords.longitude}}" zoom="16" disable-default-u-i="true">
       <marker position="{{incident.coords.latitude}},{{incident.coords.longitude}}"></marker>
     </map>
-  </ion-item>
+  </ion-item> -->
 
-  <button class="button button-block button-positive" ng-click="submit()">Submit</button>
-  <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button>
+  <button class="button button-block button-positive" ng-disabled="f2.$invalid" ng-click="submit()">Submit</button>
+<!--   <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button> -->
+</form>
 </div>
 </div>
 </ion-content>

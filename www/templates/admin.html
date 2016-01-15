@@ -1,9 +1,27 @@
- <ion-view title="Welcome Admin" cache-view="false">
-<ion-nav-buttons side="right">
+
+
+<ion-view title="Safe@Scneider"  cache-view="false">
+ <ion-nav-bar class="bar-stable">  </ion-nav-bar>
+<!-- //https://github.com/dangrossman/bootstrap-daterangepicker/blob/master/website/index.html -->
+
+
+<ion-nav-buttons side="left">
+ <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" style = "color: green"></i> </button>
 </ion-nav-buttons>
+
+<ion-nav-buttons side="right">
+ <button class="button button-clear icon ion-home" ng-click="myHome()"></button>
+</ion-nav-buttons>
+
 <ion-content padding="true">
 <div class="max-width ">
   <div class="list no-margin-top">
+
+      <center><img src = "http://www.defenddemocracy.org/content/uploads/general/Schneider_Electric_Logo.gif"></center>
+      
+      <div class="bar bar-balanced">
+  <h1 class="title"> Get reports </h1>
+</div><br><br><br>
 
 <div class="list">
 
@@ -23,13 +41,13 @@
       <h2>Incident Investigation</h2>
     </a>
 
-            <a class="item item-thumbnail-left" href="#/workspacereport">
+            <a class="item item-thumbnail-left" href="#/workplacereport">
           
       <img src="http://www.pcdominion.com/images/StackerCatInspection.jpg">
-      <h2>Workspace Inspection</h2>
+      <h2>Workplace Inspection</h2>
     </a>
 
-            <a class="item item-thumbnail-left" href="#/workspacereport">
+            <a class="item item-thumbnail-left" href="#/workplacereport">
           
       <img src="http://cdn.meme.am/instances/500x/58417766.jpg">
       <h2>Internal/External Audits</h2>
@@ -41,3 +59,12 @@
     </a>
 
 </div> </div></div></ion-content>
+  <ion-footer-bar align-title="left" class="bar-stable">
+  <div class="buttons">
+    <button class="button">Support</button>
+  </div>
+  <h1 class="title"></h1>
+  <div class="buttons" ng-click="doSomething()">
+    <button class="button">Contact Us</button>
+  </div>
+</ion-footer-bar>

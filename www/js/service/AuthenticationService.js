@@ -2,7 +2,7 @@
     'use strict';
     angular.module('starter.authservice',[])
     .factory('AuthenticationService', function($http, $rootScope, $timeout, $location, loginService, $localstorage, UserService){
-
+//http://arthur.gonigberg.com/2013/06/29/angularjs-role-based-auth/
         var service = {};
 
         service.Login = Login;

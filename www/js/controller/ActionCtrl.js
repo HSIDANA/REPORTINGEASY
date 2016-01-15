@@ -1,8 +1,12 @@
 angular.module('starter.actioncontroller', ['ionic-datepicker'])
 
-.controller('ActionCtrl', function($scope, $http, $ionicHistory) {
+.controller('ActionCtrl', function($scope, $http, $ionicHistory, $location) {
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
+  };
+
+   $scope.myHome = function() {
+ $location.path( '/login');
   };
 
 /*

@@ -1,11 +1,12 @@
 
 
-<ion-view title="Risk Assessment" ng-init="Initialize()" cache-view="false">
+<ion-view title="Safe@Scneider" ng-init="Initialize()" cache-view="false">
+ <ion-nav-bar class="bar-stable">  </ion-nav-bar>
 <!-- //https://github.com/dangrossman/bootstrap-daterangepicker/blob/master/website/index.html -->
 
 
 <ion-nav-buttons side="left">
- <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" ></i> Back</button>
+ <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" style = "color: green"></i> </button>
 </ion-nav-buttons>
 
 <ion-nav-buttons side="right">
@@ -14,8 +15,13 @@
 
 <ion-content padding="true">
 <div class="max-width ">
-
   <div class="list no-margin-top">
+
+      <center><img src = "http://www.defenddemocracy.org/content/uploads/general/Schneider_Electric_Logo.gif"></center>
+      
+      <div class="bar bar-balanced">
+  <h1 class="title">Risk Assessment Form</h1>
+</div><br><br><br>
 <!--     <button class = "button" ng-click = "insert()">Insert</button>
     <button class = "button" ng-click = "select('Nic')">Select</button> -->
 
@@ -36,10 +42,10 @@
                            min="'2015-01-23'" max="'2015-08-25'" ng-model="date"
                            required/>
                     </div> -->
-
+<form name = "f1">
     <div class = "col">
-      <label class="item item-input">
-        <textarea placeholder="Register Number" ng-model="report.text"></textarea>
+      <label class="item item-input" >
+        <input type = "text" placeholder="Register Number" ng-model="report.text" required>
       </label>
     </div>
 
@@ -56,7 +62,7 @@
 
     <div class = "col">
       <label class="item item-input">
-        <span class="input-label">Time</span>
+        <span class="input-label" style = "color: #29a329; font-size : 14px">Time</span>
         <!-- This was making report.date null for some reason. TODO: fix -->
         <!-- TODO: ADD validation here - not max & min -->
         <input type="datetime-local" ng-model="report.date" value="{{date | date:'mediumTime'}}">
@@ -66,7 +72,7 @@
 
     <div class = "col">
     <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label" style = "color: #29a329; font-size : 14px">
         Category
       </div>
       <select ng-model="report.category"  class="form-control" > 
@@ -77,19 +83,19 @@
 
   <div class = "col">
     <label class="item item-input">
-      <textarea placeholder="RA Title" ng-model="report.RAtitle"></textarea>
+      <input type = "text" placeholder="RA Title" ng-model="report.RAtitle">
     </label>
   </div>
 
   <div class = "col">
     <label class="item item-input">
-      <textarea placeholder="Asset Number" ng-model="report.assetNo"></textarea>
+      <input type = "text" placeholder="Asset Number" ng-model="report.assetNo">
     </label>
   </div>
 
     <div class = "col">
     <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label" style = "color: #29a329; font-size : 14px">
         Plant/Department
       </div>
       <select ng-model="report.deoartment"  class="form-control" > 
@@ -97,19 +103,19 @@
       </select>
     </label>
   </div>
-  <div class = "row">
-    <div class = "col">
-      <ion-checkbox >Concept</ion-checkbox></div>
-      <div class = "col">
-        <ion-checkbox>New/Initial/Commissioning</ion-checkbox></div></div>
-        <div class = "row">
+  <div class = "row" style = "margin-left : -5px; margin-right : -5px">
+    <div class = "col" >
+      <ion-checkbox style = "color: #29a329; font-size : 14px" >Concept</ion-checkbox></div>
+      <div class = "col" style = "margin-right: -10px">
+        <ion-checkbox style = "color: #29a329; font-size : 14px">New/Initial/Commissioning</ion-checkbox></div></div>
+        <div class = "row" style = "margin-left : -5px">
           <div class = "col">
-            <ion-checkbox>Altered/revised</ion-checkbox></div>
-            <div class = "col">
-              <ion-checkbox>Relocated</ion-checkbox></div></div>
+            <ion-checkbox style = "color: #29a329; font-size : 14px; font-size : 14px">Altered/revised</ion-checkbox></div>
+            <div class = "col" style = "margin-right: -10px">
+              <ion-checkbox style = "color: #29a329; font-size : 14px">Relocated</ion-checkbox></div></div>
     <div class = "col">
     <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label" style = "color: #29a329; font-size : 14px">
         Managers
       </div>
    <!--    <select  ng-model="report.managers"  class="form-control" > 
@@ -123,7 +129,7 @@
 
   <div class = "col">
     <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label" style = "color: #29a329; font-size : 14px">
         Management Rep
       </div>
       <select ng-model="report.rep" ng-change="selected()" class="form-control" > 
@@ -136,7 +142,7 @@
 
   <div class = "col">
     <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label" style = "color: #29a329; font-size : 14px">
         HSE Rep
       </div>
       <select ng-model="report.hseRep" ng-change="selected()" class="form-control" > 
@@ -144,27 +150,27 @@
     </label>
   </div>
   
-  <div class = "row">
+  <div class = "row" style = "margin-left : -5px">
     <div class = "col">
       <label class="item item-input">
-        <textarea placeholder="Team Member 1" ng-model="report.team1"></textarea>
+        <input type = "text" placeholder="Team Member 1" ng-model="report.team1">
       </label>
     </div>
     <div class = "col">
      <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label" style = "color: #29a329; font-size : 14px">
         Title
       </div></div></div>
 
-<div class = "row">
+<div class = "row" style = "margin-left : -5px">
   <div class = "col">
     <label class="item item-input">
-      <textarea placeholder="Team Member 2" ng-model="report.team2"></textarea>
+      <input type = "text" placeholder="Team Member 2" ng-model="report.team2">
     </label>
   </div>
   <div class = "col">
    <label class="item item-input item-select">
-    <div class="input-label">
+    <div class="input-label" style = "color: #29a329; font-size : 14px">
       Title
     </div>
     <select ng-model="report.department" ng-change="selected()" class="form-control" > 
@@ -175,15 +181,15 @@
     </label>
   </div></div>
   
-  <div class = "row">
+  <div class = "row" style = "margin-left : -5px">
     <div class = "col">
-      <label class="item item-input">
-        <textarea placeholder="Team Member 3" ng-model="report.team3"></textarea>
+      <label class="item item-input" style = "color: #29a329; font-size : 14px">
+        <input type = "text" placeholder="Team Member 3" ng-model="report.team3">
       </label>
     </div>
     <div class = "col">
      <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label" style = "color: #29a329; font-size : 14px">
         Title
       </div>
       <select ng-model="report.department" ng-change="selected()" class="form-control" > 
@@ -194,15 +200,15 @@
     </label>
   </div></div>
   
-  <div class = "row">
+  <div class = "row" style = "margin-left : -5px">
     <div class = "col">
-      <label class="item item-input">
-        <textarea placeholder="Team Member 4" ng-model="report.team4"></textarea>
+      <label class="item item-input" style = "color: #29a329; font-size : 14px">
+        <input type = "text" placeholder="Team Member 4" ng-model="report.team4">
       </label>
     </div>
     <div class = "col">
      <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label" style = "color: #29a329; font-size : 14px">
         Title
       </div>
       <select ng-model="report.department" ng-change="selected()" class="form-control" > 
@@ -215,7 +221,7 @@
   <div class = "col">
     <label class="item item-input">
 
-      <span class="input-label">Review Date</span>
+      <span class="input-label" style = "color: #29a329; font-size : 14px">Review Date</span>
       <!-- This was making report.date null for some reason. TODO: fix -->
       <!-- TODO: ADD validation here - not max & min -->
       <input type="datetime-local" ng-model="report.revDate" value="{{date | date:'mediumTime'}}">
@@ -223,16 +229,16 @@
 
     </label>
   </div>
-  <div class = "row">
+  <div class = "row" style = "margin-left : -5px">
     <div class = "col">
-      <ion-checkbox >Equipment De-Commissioned</ion-checkbox></div>
+      <ion-checkbox  style = "color: #29a329">Equipment De-Commissioned</ion-checkbox></div>
       <div class = "col">
-        <ion-checkbox>RA Superceeded</ion-checkbox></div></div>
+        <ion-checkbox style = "color: #29a329">RA Superceeded</ion-checkbox></div></div>
 
-        <button class="button button-block button-positive" ng-click="submit()">Submit</button>
-        <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button>
+        <button class="button button-block button-positive" ng-disabled="f1.$invalid" ng-click="submit()">Submit</button>
+   <!--      <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button> -->
           <!--  <button class="button-clear" ng-click="myGoBack()">Back</button> -->
-   
+   </form>
   
       </div>
     </div>

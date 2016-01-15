@@ -1,21 +1,30 @@
 
- <ion-view title="Welcome" cache-view="false">
+ <ion-view title="Safe@Scneider" cache-view="false" class = "login">
+ <ion-nav-bar class="bar-stable">  </ion-nav-bar>
+
 <ion-nav-buttons side="right">
 </ion-nav-buttons>
 <ion-content padding="true">
+
 <div class="max-width ">
   <div class="list no-margin-top">
 
-    <button class="button button-block button-calm" ng-click="report()" >Report Incidents</button>
+
+<center><img src = "http://www.defenddemocracy.org/content/uploads/general/Schneider_Electric_Logo.gif"></center>
+
+    <button class="button button-block button-balanced" ng-click="report()" >Report Incidents</button>
       <p class="text-center">or</p>
 
    <label class="item item-input">
-        <input type="text" placeholder="Username or Email" autocorrect="off" autocapitalize="none" ng-model="user.username">
+        <input type="text" placeholder="Username or Email" autocorrect="off" autocomplete="off" autocapitalize="none" ng-model="data.username" onfocus="this.placeholder = ''">
     </label>
+    <a class="clear" ng-click="username = null">
+    <span class="glyphicon glyphicon-remove"></span>
+</a>
     <label class="item item-input">
-        <input type="password" placeholder="Password" ng-model="user.password">
+        <input type="password" placeholder="Password" ng-model="data.password">
     </label>
-    <button class="button button-block button-calm" ng-click="login()">Login as Admin</button>
+    <button class="button button-block button-balanced" ng-click="login()" >Login as Admin</button>
     <!-- <button class="button button-block button-calm button-clear button-outline" ng-click="twitterLogin()">Twitter</button> -->
     <p class="text-center">
         <a href  ng-click="forgot()">Forgot Login</a>
@@ -23,3 +32,4 @@
 
 </div></div>
 </ion-content>
+</ion-veiw>

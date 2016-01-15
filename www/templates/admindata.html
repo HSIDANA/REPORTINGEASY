@@ -1,10 +1,27 @@
-    <ion-view title="Admin Data" cache-view="false">
-<ion-nav-buttons side="right">
+
+
+<ion-view title="Safe@Scneider"  cache-view="false">
+ <ion-nav-bar class="bar-stable">  </ion-nav-bar>
+<!-- //https://github.com/dangrossman/bootstrap-daterangepicker/blob/master/website/index.html -->
+
+
+<ion-nav-buttons side="left">
+ <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" style = "color: green"></i> </button>
 </ion-nav-buttons>
+
+<ion-nav-buttons side="right">
+ <button class="button button-clear icon ion-home" ng-click="myHome()"></button>
+</ion-nav-buttons>
+
 <ion-content padding="true">
 <div class="max-width ">
   <div class="list no-margin-top">
-<br><br>
+
+      <center><img src = "http://www.defenddemocracy.org/content/uploads/general/Schneider_Electric_Logo.gif"></center>
+      
+      <div class="bar bar-balanced">
+  <h1 class="title">Add data</h1>
+</div><br><br><br>
 
     <div class = "row">
     	    <div class = "col">
@@ -14,7 +31,7 @@
         <textarea placeholder="Manager Name" ng-model="data.manager"></textarea> -->
       </label></div>
     <div class = "col">
-<button class="button button-dark" ng-click="addManager()" >
+<button class="button button-balanced" ng-click="addManager()" >
 
 Add Manager</button>
     </div></div>
@@ -26,7 +43,7 @@ Add Manager</button>
         <input type = "text" placeholder="Manager Rep" ng-model="data.representative">
       </label></div>
     <div class = "col">
-<button class="button button-dark" ng-click="addRep()"> Add Manager Rep</button>
+<button class="button button-balanced" ng-click="addRep()"> Add Manager Rep</button>
     </div></div>
 
         <div class = "row">
@@ -35,7 +52,7 @@ Add Manager</button>
             <input type="text" placeholder ="Incident Type" ng-model="data.incident">
       </label></div>
     <div class = "col">
-<button class="button button-dark"  ng-click="addIncidentType()"> Add Incident Type</button>
+<button class="button button-balanced"  ng-click="addIncidentType()"> Add Incident Type</button>
     </div></div>
 
             <div class = "row">
@@ -44,7 +61,7 @@ Add Manager</button>
         <input type="text" placeholder="Category" ng-model="data.category">
       </label></div>
     <div class = "col">
-<button class="button button-dark" ng-click="addCategories()"> Add categories</button>
+<button class="button button-balanced" ng-click="addCategories()"> Add categories</button>
     </div></div>
 
             <div class = "row">
@@ -53,7 +70,7 @@ Add Manager</button>
                <input type="text" placeholder="Add Department" ng-model="data.department">
       </label></div>
     <div class = "col">
-<button class="button button-dark" ng-click="addDepartment()"> Add Department</button>
+<button class="button button-balanced" ng-click="addDepartment()"> Add Department</button>
     </div></div>
 
         <div class = "row">
@@ -62,7 +79,16 @@ Add Manager</button>
                <input type="text" placeholder="Meeting Type" ng-model="data.meeting">
       </label></div>
     <div class = "col">
-<button class="button button-dark" ng-click="addMeetingType()"> Add Meeting Type</button>
+<button class="button button-balanced" ng-click="addMeetingType()"> Add Meeting Type</button>
     </div></div>
     </div></div>
 </ion-content>
+  <ion-footer-bar align-title="left" class="bar-stable">
+  <div class="buttons">
+    <button class="button">Support</button>
+  </div>
+  <h1 class="title"></h1>
+  <div class="buttons" ng-click="doSomething()">
+    <button class="button">Contact Us</button>
+  </div>
+</ion-footer-bar>

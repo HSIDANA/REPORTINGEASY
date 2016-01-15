@@ -1,9 +1,13 @@
 angular.module('starter.admindatactrl', [])
 
-.controller('AdminDataCtrl', function($scope, $firebase, $ionicHistory) {
+.controller('AdminDataCtrl', function($scope, $firebase, $ionicHistory, $location) {
 
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
+  };
+
+   $scope.myHome = function() {
+ $location.path( '/login');
   };
  var ref = new Firebase("https://mysafe.firebaseio.com/");
    ref.authWithPassword({

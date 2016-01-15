@@ -12,6 +12,10 @@
 
 }
 
+.login {
+background: url('http://software.schneider-electric.com/uploadedImages/Content/Home_-_Noindex/Carousel_images/Life-is-on.jpg?n=4678') no-repeat center;
+}
+
 body {   
     font-family: arial;
 }

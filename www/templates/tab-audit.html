@@ -1,6 +1,12 @@
-<ion-view title="Internal/External Audits" cache-view="false">
+
+
+<ion-view title="Safe@Scneider" ng-init="Initialize()" cache-view="false">
+ <ion-nav-bar class="bar-stable">  </ion-nav-bar>
+<!-- //https://github.com/dangrossman/bootstrap-daterangepicker/blob/master/website/index.html -->
+
+
 <ion-nav-buttons side="left">
- <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" ></i> Back</button>
+ <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" style = "color: green"></i> </button>
 </ion-nav-buttons>
 
 <ion-nav-buttons side="right">
@@ -8,14 +14,20 @@
 </ion-nav-buttons>
 
 <ion-content padding="true">
-
 <div class="max-width ">
   <div class="list no-margin-top">
 
+      <center><img src = "http://www.defenddemocracy.org/content/uploads/general/Schneider_Electric_Logo.gif"></center>
+      
+      <div class="bar bar-balanced">
+  <h1 class="title">Internal/External Audit Form</h1>
+</div><br><br><br>
+
+<form name = "f3">
 <div class = "col">
     <label class="item item-input">
 
-      <span class="input-label">Audit Date</span>
+      <span class="input-label" style = "color: #29a329; font-size : 14px">Audit Date</span>
       <!-- This was making report.date null for some reason. TODO: fix -->
       <!-- TODO: ADD validation here - not max & min -->
       <input type="datetime-local" ng-model="inspection.date" value="{{date | date:'mediumTime'}}">
@@ -23,10 +35,10 @@
 
     </label>
 </div>
-<div class = "row">
+<div class = "row" style = "margin-left: -5px">
   <div class = "col">
     <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label" style = "color: #29a329; font-size : 14px">
         Source
       </div>
       <select ng-model="inspection.category" ng-change="selected()" class="form-control" > 
@@ -40,9 +52,9 @@ External
     </label>
 </div>
 
-    <div class = "col">
+    <div class = "col" style = "margin-right: -10px">
     <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label" style = "color: #29a329; font-size : 14px">
         Plant/Department
       </div>
       <select ng-model="report.auditDepartment"  class="form-control" > 
@@ -51,21 +63,22 @@ External
     </label>
   </div></div>
 
-<div class ="row">
+<div class ="row" style = "margin-left: -5px">
   <div class ="col">
-    <label class="item item-input">
-      <textarea placeholder="Auditor" ng-model="inspection.description"></textarea>
+    <label class="item item-input" style = "color: #29a329; font-size : 14px">
+      <input type = "text" placeholder="Auditor" ng-model="inspection.description">
     </label>
 </div>
-<div class = "col">
-      <label class="item item-input">
-      <textarea placeholder="AUdit Title" ng-model="inspection.description"></textarea>
+<div class = "col" style = "margin-right: -10px">
+      <label class="item item-input" style = "color: #29a329; font-size : 14px" required>
+      <input type = "text" placeholder="AUdit Title" ng-model="inspection.description" required>
     </label>
 </div>
 </div>
 
-  <button class="button button-block button-positive" ng-click="submit()">Submit</button>
-  <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button>
+  <button class="button button-block button-positive"  ng-disabled="f3.$invalid" ng-click="submit()">Submit</button>
+<!--   <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button> -->
+</form>
 </div>
 </div>
 </ion-content>

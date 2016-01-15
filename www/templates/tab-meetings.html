@@ -1,6 +1,12 @@
-<ion-view title="HSE Meetings" cache-view="false">
+
+
+<ion-view title="Safe@Scneider" ng-init="Initialize()" cache-view="false">
+ <ion-nav-bar class="bar-stable">  </ion-nav-bar>
+<!-- //https://github.com/dangrossman/bootstrap-daterangepicker/blob/master/website/index.html -->
+
+
 <ion-nav-buttons side="left">
- <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" ></i> Back</button>
+ <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" style = "color: green"></i> </button>
 </ion-nav-buttons>
 
 <ion-nav-buttons side="right">
@@ -8,19 +14,25 @@
 </ion-nav-buttons>
 
 <ion-content padding="true">
-
 <div class="max-width ">
   <div class="list no-margin-top">
 
+      <center><img src = "http://www.defenddemocracy.org/content/uploads/general/Schneider_Electric_Logo.gif"></center>
+      
+      <div class="bar bar-balanced">
+  <h1 class="title">HSE Meeting Form</h1>
+</div><br><br><br>
+
+<form name = "f4">
 <div class = "col">
     <label class="item item-input">
-      <span class="input-label">Meeting Date</span>
+      <span class="input-label" style = "color: #29a329; font-size : 14px">Meeting Date</span>
       <input type="datetime-local" ng-model="meeting.date" value="{{date | date:'mediumTime'}}">
     </label>
 </div>
     <div class = "col">
     <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label" style = "color: #29a329; font-size : 14px">
         Plant/Department
       </div>
       <select ng-model="meeting.plant"  class="form-control" > 
@@ -31,7 +43,7 @@
 
     <div class = "col">
     <label class="item item-input item-select">
-      <div class="input-label">
+      <div class="input-label" style = "color: #29a329; font-size : 14px">
       Meeting Type
       </div>
       <select ng-model="meeting.type"  class="form-control" > 
@@ -44,26 +56,27 @@
 
   <div class ="col">
     <label class="item item-input">
-      <textarea placeholder="Meeting Chair" ng-model="meeting.description"></textarea>
+      <input type = "text" placeholder="Meeting Chair" ng-model="meeting.description" required>
     </label>
 </div>
 
 <div class = "col">
       <label class="item item-input">
-      <textarea placeholder="Comments" ng-model="meeting.description"></textarea>
+      <input type = "text" placeholder="Comments" ng-model="meeting.description"></textarea>
     </label>
 </div>
 <!--removed ng-value might need later to store in db-->
 
 <div class ="row">
-  <div class = "col">
-<ion-radio ng-model="choice">Add Action</ion-radio></div>
-<div class = "col">
-<ion-radio ng-model="choice" >No Action Required</ion-radio></div></div>
+  <div class = "col" style = "margin-left : 10px">
+<ion-radio ng-model="choice" style = "color: #29a329; font-size : 14px">Add Action</ion-radio></div>
+<div class = "col" style = "margin-right : -20px">
+<ion-radio ng-model="choice"  style = "color: #29a329; font-size : 14px">No Action Required</ion-radio></div></div>
 
 
-  <button class="button button-block button-positive" ng-click="submit()">Submit</button>
-  <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button>
+  <button class="button button-block button-positive"  ng-disabled="f4.$invalid"  ng-click="submit()">Submit</button>
+<!--   <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button> -->
+</form>
 </div>
 </div>
 </ion-content>

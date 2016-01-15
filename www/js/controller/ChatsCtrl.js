@@ -1,6 +1,6 @@
 // inspired by https://www.airpair.com/ionic-framework/posts/ionic-firebase-camera-app
 angular.module('starter.chatsctrl', [])
-.controller('ChatsCtrl', function($scope, Camera, $http,$firebaseArray, $cordovaCamera, $ionicHistory, $ionicActionSheet ) {
+.controller('ChatsCtrl', function($scope, Camera, $http,$firebaseArray, $cordovaCamera, $ionicHistory, $ionicActionSheet, $location ) {
 
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
@@ -22,9 +22,9 @@ angular.module('starter.chatsctrl', [])
   }
 });
  $scope.Initialize1 = function() {
-  alert("here");
+  // alert("here");
     var syncArray = ref.child("images");
-    alert(syncArray);
+    // alert(syncArray);
         $scope.images = syncArray;
       }
         //    $scope.upload = function() {
@@ -51,15 +51,15 @@ angular.module('starter.chatsctrl', [])
     {
         navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
             destinationType: Camera.DestinationType.DATA_URL }); 
-alert("l");
+// alert("l");
       function onSuccess(imageData) {
-        alert("mk");
+        // alert("mk");
         var image = document.getElementById('myImage');
         image.src ="data:image/jpeg;base64," + imageData;       
     }
 
     function onFail(message) {
-        alert('Failed because: ' + message);
+        // alert('Failed because: ' + message);
     }       
 
 };
@@ -76,19 +76,19 @@ alert("l");
                 saveToPhotoAlbum:false
             });
         function onSuccess(imageData) {
-          alert("success");
+          // alert("success");
             $scope.user.picture = "data:image/png;base64," + imageData;
             $scope.$apply();
         }
 
         function onFail(message) {
             if (appConstants.debug) {
-                alert('Failed because: ' + message);
+                // alert('Failed because: ' + message);
             }
         }
     };
   $scope.upload2 = function () {
-    alert("h");
+    // alert("h");
     var options = {
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
       targetWidth: 1000,
@@ -121,12 +121,12 @@ alert("l");
             buttonClicked: function(index) {
               //Ask user for library or camera
               if (index === 0) {
-                alert("in1");
+                // alert("in1");
                 presentCamera(Camera.PictureSourceType.PHOTOLIBRARY);
-                alert(err);
+                // alert(err);
               }
               else {
-                alert("in2");
+                // alert("in2");
                 presentCamera(Camera.PictureSourceType.CAMERA);
               }
               return true;
@@ -135,7 +135,7 @@ alert("l");
   };
  
   presentCamera = function (cameraType) {
-alert("in");
+// alert("in");
     var options = { 
       quality : 75, 
       destinationType : Camera.DestinationType.FILE_URI, 
@@ -190,7 +190,7 @@ $scope.selectPhoto = function(){
     }).then(function(imageURI) {
         $scope.imageURI = imageURI; //THIS ONLY WORKS SOMETIMES
     }, function(err) {
-        alert('An error has occured');
+        // alert('An error has occured');
     });
 };
     $scope.ImageURI = 'content://media/external/images/media/17';
@@ -214,9 +214,9 @@ $scope.selectPhoto = function(){
             }
 
             $scope.ShowPictures = function(){
-                alert("hh2");
+                // alert("hh2");
                 navigator.camera.getPicture(UploadPicture, function(message) {
-                        alert('get picture failed');
+                        // alert('get picture failed');
                         },{
                         quality: 50,
                         destinationType: navigator.camera.DestinationType.FILE_URI,

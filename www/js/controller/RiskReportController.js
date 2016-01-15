@@ -1,8 +1,14 @@
 angular.module('starter.riskreportcontroller', ['ionic-datepicker'])
 
-.controller('RiskReportController', function($scope, $http, $ionicHistory) {
+.controller('RiskReportController', function($scope, $http, $ionicHistory, $location) {
 
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
 
+   $scope.myHome = function() {
+ $location.path( '/login');
+  };
 
 /*
   Dropdown with Multiple checkbox select with jQuery - May 27, 2013
