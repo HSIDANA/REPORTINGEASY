@@ -8606,6 +8606,21 @@ a.button {
       max-width: 100%;
       width: 100%; } }
 
+/*      @media (min-width : 2000px and max-width: 1000px) {
+ .login{ 
+  { max-width: 20%; }
+  }
+}*/
+
+
+
+/*@media (min-device-width : 320px) and (max-device-width : 480px) {
+  .ri { 
+    width:30%;
+  }
+}*/
+
+
 @media (max-width: 1023px) {
   .responsive-lg {
     -webkit-box-direction: normal;

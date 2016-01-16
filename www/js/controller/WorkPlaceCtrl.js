@@ -1,7 +1,7 @@
 angular.module('starter.workplacectrl', [])
 
 .controller('WorkPlaceCtrl', function($scope, $firebaseArray, $ionicHistory, $ionicActionSheet, $location) {
-alert("h");
+// alert("h");
    $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };
