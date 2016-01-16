@@ -46,7 +46,7 @@ $scope.choice = [{text: "Option Added", value: "added", selected: false},
 var val = "";
   $scope.choiceChanged = function(item) {
             // alert(item.value);
-           if (item.val == "added")
+           if (item.value == "added")
            {
             val = "required";
            }

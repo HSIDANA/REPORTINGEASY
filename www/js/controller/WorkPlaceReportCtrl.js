@@ -1,6 +1,6 @@
 angular.module('starter.workplacereportctrl', ['ionic-datepicker','ngCsv','ngSanitize'])
 
-.controller('WorkPlaceReportCtrl', function($scope, $http, $firebaseArray,$timeout, $filter, $location  ) {
+.controller('WorkPlaceReportCtrl', function($scope, $http, $firebaseArray,$timeout, $filter, $location, $ionicHistory  ) {
 
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
@@ -48,6 +48,7 @@ users.$loaded()
 //             var a = $scope.department.name ;
 //             alert(a);
 //         });
+ $scope.plants.push("All Plants");
 };
 
           $scope.selected_items = [];
@@ -135,6 +136,12 @@ users.$loaded()
             arr.push(user.description);
             arr1.push(user.$id);
            }
+           else if (plnt == "All Plants")
+           {
+             var dt = user.date+"/"+(user.month+1)+"/"+user.year;
+            $scope.ctrl.push({INSPECTOR : user.description, KEY : user.$id, PLANT: user.department, ACTIONS : user.actions, DATE : dt});
+    
+           }
          })
     });
 
@@ -151,7 +158,7 @@ array[i] = arr[i].toString();
   { id: '1', name: array[0], status: '123' }, 
   { id: '2', name: array[1], status: '323'}
 ];
-   alasql('SELECT * INTO XLS("output.xls",{headers:true}) FROM ?',[$scope.ctrl]);
+   alasql('SELECT * INTO XLS("Workplace_"+new Date()+".xls",{headers:true}) FROM ?',[$scope.ctrl]);
 }
 
 
