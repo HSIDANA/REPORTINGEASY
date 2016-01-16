@@ -8606,20 +8606,11 @@ a.button {
       max-width: 100%;
       width: 100%; } }
 
-/*      @media (min-width : 2000px and max-width: 1000px) {
+    
  .login{ 
-  { max-width: 20%; }
-  }
-}*/
+  background: url('https://s-media-cache-ak0.pinimg.com/236x/17/b2/7c/17b27cad32a0713048381872dc5bb91d.jpg');
 
-
-
-/*@media (min-device-width : 320px) and (max-device-width : 480px) {
-  .ri { 
-    width:30%;
-  }
-}*/
-
+}
 
 @media (max-width: 1023px) {
   .responsive-lg {

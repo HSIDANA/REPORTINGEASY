@@ -1,6 +1,6 @@
 angular.module('starter.workplacectrl', [])
 
-.controller('WorkPlaceCtrl', function($scope, $firebaseArray, $ionicHistory, $ionicActionSheet, $location) {
+.controller('WorkPlaceCtrl', function($scope, $firebaseArray, $ionicHistory, $ionicActionSheet, $location ,$ionicPopup) {
 // alert("h");
    $scope.myGoBack = function() {
     $ionicHistory.goBack();
@@ -86,6 +86,10 @@ var val = "";
 
 
 // alert(ref);
+        var alertPopup = $ionicPopup.alert({
+            title: 'Report Submitted!',
+            template: 'You ll get your id soon!'
+        });
 	  var date = $scope.data.date ;
     var m = date.getMonth();
     // alert(m);
