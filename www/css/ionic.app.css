@@ -3048,11 +3048,6 @@ script {
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *  user zoom.
  */
-
- .login {
-background: url('https://s-media-cache-ak0.pinimg.com/236x/17/b2/7c/17b27cad32a0713048381872dc5bb91d.jpg');
-}
- 
 html {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -8605,12 +8600,6 @@ a.button {
       margin-left: 0;
       max-width: 100%;
       width: 100%; } }
-
-    
- .login{ 
-  background: url('https://s-media-cache-ak0.pinimg.com/236x/17/b2/7c/17b27cad32a0713048381872dc5bb91d.jpg');
-
-}
 
 @media (max-width: 1023px) {
   .responsive-lg {

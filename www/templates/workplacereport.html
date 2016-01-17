@@ -92,18 +92,40 @@
  <table width="100%"  ng-show="(ctrl | filter:criteria).length" required>
         <thead style = "color: #29a329" >
             <tr>
-                <th>INSPECTOR</th>
-                <th>INSPECTION ID</th>
-                <th>PLANT NAME</th>
-                <th>DATE</th>
-                <th>ACTIONS</th>
+        <th>
+          <a href="#" ng-click="orderByField='INSPECTOR'; reverseSort = !reverseSort" style = "color: #29a329" >
+          INSPECTOR <span ng-show="orderByField == 'INSPECTOR'" style = "color: #29a329" ><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+          </a>
+        </th>
+<!--                 <th>INSPECTOR</th> -->
+                <th>
+   <a href="#" ng-click="orderByField='KEY'; reverseSort = !reverseSort" style = "color: #29a329" >
+          INSPECTION ID <span ng-show="orderByField == 'KEY'" style = "color: #29a329" ><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+          </a>
+                </th>
+                <th>
+  <a href="#" ng-click="orderByField='PLANT'; reverseSort = !reverseSort" style = "color: #29a329" >
+          PLANT NAME <span ng-show="orderByField == 'PLANT'" style = "color: #29a329" ><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+          </a>
+
+            </th>
+                <th>
+  <a href="#" ng-click="orderByField='DATE'; reverseSort = !reverseSort" style = "color: #29a329" >
+          DATE <span ng-show="orderByField == 'DATE'" style = "color: #29a329" ><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+          </a>
+                </th>
+                <th>
+  <a href="#" ng-click="orderByField='ACTIONS'; reverseSort = !reverseSort" style = "color: #29a329" >
+          ACTIONS <span ng-show="orderByField == 'ACTIONS'" style = "color: #29a329" ><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+          </a>
+                </th>
 
             </tr>
         </thead>
       
 
         <tbody>
-            <tr ng-repeat="data in ctrl | filter:criteria">
+            <tr ng-repeat="data in ctrl | filter:criteria |orderBy:orderByField:reverseSort">
                  <td>{{data.INSPECTOR}}</td>
                 <td>{{data.KEY}}</td>
                 <td>{{data.PLANT}}</td>
@@ -127,7 +149,7 @@
   </div>
   <h1 class="title"></h1>
   <div class="buttons" ng-click="doSomething()">
-    <button class="button">Contact Us</button>
+    <button class="button" >Contact Us</button>
   </div>
 </ion-footer-bar>
 

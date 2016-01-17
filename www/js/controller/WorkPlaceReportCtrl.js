@@ -2,6 +2,9 @@ angular.module('starter.workplacereportctrl', ['ionic-datepicker','ngCsv','ngSan
 
 .controller('WorkPlaceReportCtrl', function($scope, $http, $firebaseArray,$timeout, $filter, $location, $ionicHistory  ) {
 
+  $scope.orderByField = 'INSPECTOR';
+  $scope.reverseSort = false;
+
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };
@@ -158,7 +161,7 @@ array[i] = arr[i].toString();
   { id: '1', name: array[0], status: '123' }, 
   { id: '2', name: array[1], status: '323'}
 ];
-   alasql('SELECT * INTO XLS("Workplace_"+new Date()+".xls",{headers:true}) FROM ?',[$scope.ctrl]);
+   alasql('SELECT * INTO XLSX("Workplace_"+new Date()+".xls",{headers:true}) FROM ?',[$scope.ctrl]);
 }
 
 
