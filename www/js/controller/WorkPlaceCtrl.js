@@ -41,8 +41,8 @@ users.$loaded()
 //             alert(a);
 //         });
 };
-$scope.choice = [{text: "Option Added", value: "added", selected: false},
-{text: "Option not added", value: "no", selected: true}];
+$scope.choice = [{text: "Actions Added", value: "added", selected: false},
+{text: "Actions not added", value: "no", selected: true}];
 var val = "";
   $scope.choiceChanged = function(item) {
             // alert(item.value);

@@ -26,10 +26,6 @@ $dark:                            #444 !default;
   used under CC BY http://creativecommons.org/licenses/by/4.0/
   Modified icons to fit ionicon’s grid from original.
 */
-
-.login {
-background: url('https://s-media-cache-ak0.pinimg.com/236x/17/b2/7c/17b27cad32a0713048381872dc5bb91d.jpg') ;
-}
 @font-face {
   font-family: "Ionicons";
   src: url("../lib/ionic/fonts/ionicons.eot?v=2.0.1");
@@ -7879,6 +7875,11 @@ progress {
  * Buttons
  * --------------------------------------------------
  */
+
+.login {
+background: url('https://s-media-cache-ak0.pinimg.com/236x/17/b2/7c/17b27cad32a0713048381872dc5bb91d.jpg') ;
+}
+
 .button {
   border-color: #b2b2b2;
   background-color: #f8f8f8;
