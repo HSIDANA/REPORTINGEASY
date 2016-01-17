@@ -32,7 +32,7 @@ angular.module('starter.workplacereportctrl', ['ionic-datepicker','ngCsv','ngSan
     // alert("Authenticated successfully with payload:", authData);
   }
 });
-
+// $scope.loading = true;
   
     $scope.plants = [];
     $scope.Initialize4 = function() {
@@ -52,6 +52,7 @@ users.$loaded()
 //             alert(a);
 //         });
  $scope.plants.push("All Plants");
+   // $scope.loading = false;
 };
 
           $scope.selected_items = [];
