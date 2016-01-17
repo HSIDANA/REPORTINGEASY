@@ -161,7 +161,7 @@ array[i] = arr[i].toString();
   { id: '1', name: array[0], status: '123' }, 
   { id: '2', name: array[1], status: '323'}
 ];
-   alasql('SELECT * INTO XLSX("Workplace_"+new Date()+".xls",{headers:true}) FROM ?',[$scope.ctrl]);
+   alasql('SELECT * INTO XLS("Workplace_"+new Date()+".xls",{headers:true}) FROM ?',[$scope.ctrl]);
 }
 
 
