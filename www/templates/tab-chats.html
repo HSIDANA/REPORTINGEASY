@@ -29,16 +29,9 @@
     <label class="item item-input">
 
       <span class="input-label"  style = "color: #29a329; font-size : 14px">Incident Date</span>
-      <!-- This was making report.date null for some reason. TODO: fix -->
-      <!-- TODO: ADD validation here - not max & min -->
       <input type="datetime-local" ng-model="incident.date" value="{{date | date:'mediumTime'}}">
-      <!-- <input type="datetime-local" ng-model="report.date" max="{{maxDateTimeString}}" min="{{minDateTimeString}}" value="{{date | date:'mediumTime'}}"> -->
-
     </label>
 </div>
-
-
-
     <div class = "col">
     <label class="item item-input item-select">
       <div class="input-label"  style = "color: #29a329; font-size : 14px">

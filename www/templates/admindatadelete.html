@@ -1,0 +1,86 @@
+<ion-view title="Safe@Scneider" ng-init="InitDelete()" cache-view="false">
+ <ion-nav-bar class="bar-stable">  </ion-nav-bar>
+<!-- //https://github.com/dangrossman/bootstrap-daterangepicker/blob/master/website/index.html -->
+
+
+<ion-nav-buttons side="left">
+ <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" style = "color: green"></i> </button>
+</ion-nav-buttons>
+
+<ion-nav-buttons side="right">
+ <button class="button button-clear icon ion-home" ng-click="myHome()"></button>
+</ion-nav-buttons>
+
+<ion-content padding="true">
+<div class="max-width ">
+  <div class="list no-margin-top">
+
+      <center><img src = "http://www.defenddemocracy.org/content/uploads/general/Schneider_Electric_Logo.gif"></center>
+      
+
+
+
+      <div class="bar bar-balanced">
+  <h1 class="title">Delete data</h1>
+</div><br><br><br>
+
+    <div class="panel panel-default" id = "music">
+        <div class="panel-heading">
+             <h4 class="panel-title"
+                 data-toggle="collapse" 
+                 data-target="#collapseOne">
+                 Click to view managers
+             </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+   
+              
+
+          <ion-item class="item-accordion"
+                    ng-repeat="item in groups track by $index "
+                    ng-show="isGroupShown(group)" can-delete="true"
+                  can-reorder="true"
+                  can-swipe="true"
+                  item-type="item-icon-left item-icon-right">
+
+            {{item.name}}
+          </ion-item>
+
+        </div>
+    </div>
+
+
+
+    <div class = "col">
+<button class="button button-balanced" ng-click="addRep()"> Show Manager Rep</button>
+    </div>
+
+     
+    <div class = "col">
+<button class="button button-balanced"  ng-click="addIncidentType()"> Show Incident Type</button>
+    </div>
+<div class = "col">
+        
+<button class="button button-balanced" ng-click="addCategories()"> Show categories</button>
+    </div>
+
+     
+    <div class = "col">
+<button class="button button-balanced" ng-click="addDepartment()"> Show Department</button>
+    </div>
+
+ 
+    <div class = "col">
+<button class="button button-balanced" ng-click="addMeetingType()"> Show Meeting Type</button>
+    </div>
+    </div></div>
+</ion-content>
+  <ion-footer-bar align-title="left" class="bar-stable">
+  <div class="buttons">
+    <button class="button">Support</button>
+  </div>
+  <h1 class="title"></h1>
+  <div class="buttons" ng-click="doSomething()">
+    <button class="button">Contact Us</button>
+  </div>
+</ion-footer-bar>

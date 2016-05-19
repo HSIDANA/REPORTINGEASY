@@ -1,82 +1,81 @@
 
-
 <ion-view title="Safe@Scneider" ng-init="Initialize4()" cache-view="false">
- <ion-nav-bar class="bar-stable">  </ion-nav-bar>
+<ion-nav-bar class="bar-stable">  </ion-nav-bar>
 <!-- //https://github.com/dangrossman/bootstrap-daterangepicker/blob/master/website/index.html -->
 
 
 <ion-nav-buttons side="left">
- <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" style = "color: green"></i> </button>
+<button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" style = "color: green"></i> </button>
 </ion-nav-buttons>
 
 <ion-nav-buttons side="right">
- <button class="button button-clear icon ion-home" ng-click="myHome()"></button>
+<button class="button button-clear icon ion-home" ng-click="myHome()"></button>
 </ion-nav-buttons>
 
 <ion-content padding="true">
 <div class="max-width ">
   <div class="list no-margin-top">
 
-      <center><img src = "http://www.defenddemocracy.org/content/uploads/general/Schneider_Electric_Logo.gif"></center>
-      
-      <div class="bar bar-balanced">
-  <h1 class="title">Workplace Report</h1>
-</div><br><br><br>
+    <center><img src = "http://www.defenddemocracy.org/content/uploads/general/Schneider_Electric_Logo.gif"></center>
+    
+    <div class="bar bar-balanced">
+      <h1 class="title">Workplace Report</h1>
+    </div><br><br><br>
 
-<form name = "report_form">
+    <form name = "report_form">
 
 
 
-<div data-tap-disabled="true"> </div>
-  <div class = "col">
-    <label class="item item-input item-select">
-      <div class="input-label"  style = "color: #29a329; font-size : 14px">
-        Plant/Department
-      </div>
+      <div data-tap-disabled="true"> </div>
+      <div class = "col">
+        <label class="item item-input item-select">
+          <div class="input-label"  style = "color: #29a329; font-size : 14px">
+            Plant/Department
+          </div>
    <!--    <select  ng-model="report.managers"  class="form-control" > 
         <option   ng-repeat="managers in managers track by $index" value="{{managers}}">{{managers}}</option> 
       </select> -->
       <select ng-options="plant for plant in plants" ng-model="data.option"  ng-change="change()" required>
-          <option   value="{{plant}}">{{plant}}</option> 
-<select>
-    </label>
-  </div>
+        <option   value="{{plant}}">{{plant}}</option> 
+        <select>
+        </label>
+      </div>
 
-    <div class = "row" style = "margin-left: -5px">
+      <div class = "row" style = "margin-left: -5px">
   <!--     <div class = "col">
        <button class="button button-block button-positive"> 
     Select RA Raised date range</button>
-      </div> -->
-        <div class = "col" >
+  </div> -->
+  <div class = "col" >
 
-              <label class="item item-input">
+    <label class="item item-input">
 
       <span class="input-label" style = "color: #29a329; font-size : 14px">Inspection Date</span>
 
-<input type="date" id="FromDate" name="FromDate" 
+      <input type="date" id="FromDate" name="FromDate" 
       value="{{d }}" ng-model="data.date" class="date" />
 <!-- <ionic-datepicker input-obj="datepickerObject">
   <button class="button button-block button-positive" ng-model = "data.date1"> 
     
     {{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}</button>
-</ionic-datepicker> -->
+  </ionic-datepicker> -->
 
 </div>
 
 <div class = "col" style = "margin-right: -10px">
 
-      <label class="item item-input">
+  <label class="item item-input">
 
-      <span class="input-label" style = "color: #29a329; font-size : 14px">Inspection Date</span>
+    <span class="input-label" style = "color: #29a329; font-size : 14px">Inspection Date</span>
 
-<input type="date" id="FromDate" name="FromDate" 
-      value="{{d }}" ng-model="data.date" class="date" />
+    <input type="date" id="FromDate" name="FromDate" 
+    value="{{d }}" ng-model="data.date" class="date" />
 
 <!-- <ionic-datepicker input-obj="datepickerObject1">
   <button class="button button-block button-positive" ng-model = "data.date2"> 
      {{datepickerObject1.inputDate | date:'dd - MMMM - yyyy'}}</button>
-</ionic-datepicker> -->
-</div></div>
+   </ionic-datepicker> -->
+ </div></div>
 
 
 
@@ -85,75 +84,106 @@
 
 <!-- <button class="button button-assertive" ng-click="exportToExcel('table1')">
    download
-</button> -->
+ </button> -->
 <!-- <a class="btn btn-primary" ng-mousedown="csv.generate()" ng-href="{{ csv.link() }}" download="myreport.csv">Export</a>
 <table ng-table="tableParams" show-filter="false" class="table" export-csv="csv">
   <tr ng-repeat="data in ctrl" height="10px">
     <td data-title="'Inspector'">{{data}}</td>
   </tr>
 </table> -->
- <table width="100%"  ng-show="(ctrl | filter:criteria).length" required>
-        <thead style = "color: #29a329" >
-            <tr>
-        <th>
-          <a href="#" ng-click="orderByField='INSPECTOR'; reverseSort = !reverseSort" style = "color: #29a329" >
+<table width="100%"  ng-show="(ctrl | filter:criteria).length" required>
+  <thead style = "color: #29a329" >
+    <tr>
+      <th>
+        <a href="#" ng-click="orderByField='INSPECTOR'; reverseSort = !reverseSort" style = "color: #29a329" >
           INSPECTOR <span ng-show="orderByField == 'INSPECTOR'" style = "color: #29a329" ><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
-          </a>
-        </th>
-<!--                 <th>INSPECTOR</th> -->
-                <th>
-   <a href="#" ng-click="orderByField='KEY'; reverseSort = !reverseSort" style = "color: #29a329" >
-          INSPECTION ID <span ng-show="orderByField == 'KEY'" style = "color: #29a329" ><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
-          </a>
-                </th>
-                <th>
-  <a href="#" ng-click="orderByField='PLANT'; reverseSort = !reverseSort" style = "color: #29a329" >
-          PLANT NAME <span ng-show="orderByField == 'PLANT'" style = "color: #29a329" ><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
-          </a>
+        </a>
+      </th>
+      <!--                 <th>INSPECTOR</th> -->
+      <th>
+       <a href="#" ng-click="orderByField='KEY'; reverseSort = !reverseSort" style = "color: #29a329" >
+        INSPECTION ID <span ng-show="orderByField == 'KEY'" style = "color: #29a329" ><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+      </a>
+    </th>
+    <th>
+      <a href="#" ng-click="orderByField='PLANT'; reverseSort = !reverseSort" style = "color: #29a329" >
+        PLANT NAME <span ng-show="orderByField == 'PLANT'" style = "color: #29a329" ><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+      </a>
 
-            </th>
-                <th>
-  <a href="#" ng-click="orderByField='DATE'; reverseSort = !reverseSort" style = "color: #29a329" >
-          DATE <span ng-show="orderByField == 'DATE'" style = "color: #29a329" ><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
-          </a>
-                </th>
-                <th>
-  <a href="#" ng-click="orderByField='ACTIONS'; reverseSort = !reverseSort" style = "color: #29a329" >
-          ACTIONS <span ng-show="orderByField == 'ACTIONS'" style = "color: #29a329" ><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
-          </a>
-                </th>
+    </th>
+    <th>
+      <a href="#" ng-click="orderByField='DATE'; reverseSort = !reverseSort" style = "color: #29a329" >
+        DATE <span ng-show="orderByField == 'DATE'" style = "color: #29a329" ><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+      </a>
+    </th>
+    <th>
+      <a href="#" ng-click="orderByField='ACTIONS'; reverseSort = !reverseSort" style = "color: #29a329" >
+        ACTIONS <span ng-show="orderByField == 'ACTIONS'" style = "color: #29a329" ><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+      </a>
+    </th>
 
-            </tr>
-        </thead>
-      
-
-        <tbody>
-            <tr ng-repeat="data in ctrl | filter:criteria |orderBy:orderByField:reverseSort">
-                 <td>{{data.INSPECTOR}}</td>
-                <td>{{data.KEY}}</td>
-                <td>{{data.PLANT}}</td>
-                <td>{{data.DATE}}</td>
-                <td>{{data.ACTIONS}}</td>
-           </tr>
-            </tr>
-        </tbody>
-    </table>
-  </br>
+  </tr>
+</thead>
 
 
-   <button ng-click="saveAsXlsx()" style = "color: #29a329" ng-show="(ctrl | filter:criteria).length"  >Save as Excel</button>
+<tbody>
+  <tr ng-repeat="data in ctrl | filter:criteria |orderBy:orderByField:reverseSort">
+   <td>{{data.INSPECTOR}}</td>
+   <td>{{data.KEY}}</td>
+   <td>{{data.PLANT}}</td>
+   <td>{{data.DATE}}</td>
+   <td>{{data.ACTIONS}}</td>
+ </tr>
+</tr>
+</tbody>
+</table>
+</br>
+
+<div class="list card animated bounceInLeft">  
+  <div class="item item-divider">Recent Updates</div>
+  <div class="item item-body" ng-repeat="data in ctrl | filter:criteria |orderBy:orderByField:reverseSort">
+    <div>
+      <tr > 
+       <td>{{data.INSPECTOR}}</td>
+       <td>{{data.KEY}}</td>
+       <td>{{data.PLANT}}</td>
+       <td>{{data.DATE}}</td>
+       <td>{{data.ACTIONS}}</td>
+     </tr>
+   </div>
+ </div>
+</div>  
+<div class="list card animated bounceInRight">  
+  <div class="item item-divider">Health</div>
+  <div class="item item-body">
+    <div>
+      You ate an apple today!
+    </div>
+  </div>
+</div>  
+<div class="list card animated infinite tada">  
+  <div class="item item-divider">Upcoming</div>
+  <div class="item item-body">
+    <div>
+      You have <b>29</b> meetings on your calendar tomorrow.
+    </div>
+  </div>
+</div>  
+
+
+<button ng-click="saveAsXlsx()" style = "color: #29a329" ng-show="(ctrl | filter:criteria).length"  >Save as Excel</button>
 
 </div></div>
 </form>
-  </ion-content>
-  <ion-footer-bar align-title="left" class="bar-stable">
-  <div class="buttons">
-    <button class="button">Support</button>
-  </div>
-  <h1 class="title"></h1>
-  <div class="buttons" ng-click="doSomething()">
-    <button class="button" >Contact Us</button>
-  </div>
+</ion-content>
+<ion-footer-bar align-title="left" class="bar-stable">
+<div class="buttons">
+  <button class="button">Support</button>
+</div>
+<h1 class="title"></h1>
+<div class="buttons" ng-click="doSomething()">
+  <button class="button" >Contact Us</button>
+</div>
 </ion-footer-bar>
 
 

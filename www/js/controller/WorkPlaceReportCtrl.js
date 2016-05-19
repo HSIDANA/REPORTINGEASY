@@ -13,7 +13,7 @@ angular.module('starter.workplacereportctrl', ['ionic-datepicker','ngCsv','ngSan
  $location.path( '/login');
   };
 
-//               $scope.exportToExcel=function(tableId){
+// $scope.exportToExcel=function(tableId){
 // alert(tableId);
 
 //                // ex: '#my-table'
@@ -21,17 +21,17 @@ angular.module('starter.workplacereportctrl', ['ionic-datepicker','ngCsv','ngSan
 //             $timeout(function(){location.href=$scope.fileData.exportHref;},100); // trigger download
 //         }
 
- var ref = new Firebase("https://mysafe.firebaseio.com/workspace/");
-   ref.authWithPassword({
-  "email": "s.harshita.89@gmail.com",
-  "password": "Harshita24"
-}, function(error, authData) {
-  if (error) {
-    alert("Login Failed!", error);
-  } else {
-    // alert("Authenticated successfully with payload:", authData);
-  }
-});
+     var ref = new Firebase("https://mysafe.firebaseio.com/workspace/");
+       ref.authWithPassword({
+      "email": "s.harshita.89@gmail.com",
+      "password": "Harshita24"
+    }, function(error, authData) {
+      if (error) {
+        alert("Login Failed!", error);
+      } else {
+        // alert("Authenticated successfully with payload:", authData);
+      }
+    });
 // $scope.loading = true;
   
     $scope.plants = [];
@@ -164,6 +164,4 @@ array[i] = arr[i].toString();
 ];
    alasql('SELECT * INTO XLS("Workplace_"+new Date()+".xls",{headers:true}) FROM ?',[$scope.ctrl]);
 }
-
-
 });

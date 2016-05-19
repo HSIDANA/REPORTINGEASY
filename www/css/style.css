@@ -12,6 +12,16 @@
 
 }
 
+
+.try     {
+    display: inline-block;
+    position:relative;
+    background:rgb(255,100,0);
+    margin:0px;
+    width:40%;
+    height:100px;
+    float:left;}
+
 .login {
 background: url('https://s-media-cache-ak0.pinimg.com/236x/17/b2/7c/17b27cad32a0713048381872dc5bb91d.jpg') ;
 }
@@ -47,6 +57,7 @@ table th {
     font-size: 14px;
     letter-spacing: 1px;
 }
+
 
 @media screen and (max-width: 600px) {
 
@@ -148,6 +159,19 @@ a {
 .dropdown dd ul li a:hover {
     background-color:#fff;
 }
+
+
+  .music {
+    background-color: black;
+    color: white;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-decoration: none;
+    width: 100px;
+    text-align: center;
+}
+
 button {
   background-color: #6BBE92;
   width: 302px;

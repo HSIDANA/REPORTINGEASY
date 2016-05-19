@@ -3,8 +3,6 @@
 <ion-view title="Safe@Scneider" ng-init="Initialize()" cache-view="false">
  <ion-nav-bar class="bar-stable">  </ion-nav-bar>
 <!-- //https://github.com/dangrossman/bootstrap-daterangepicker/blob/master/website/index.html -->
-
-
 <ion-nav-buttons side="left">
  <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" style = "color: green"></i> </button>
 </ion-nav-buttons>
@@ -22,44 +20,12 @@
       <div class="bar bar-balanced">
   <h1 class="title">Risk Assessment Form</h1>
 </div><br><br><br>
-<!--     <button class = "button" ng-click = "insert()">Insert</button>
-    <button class = "button" ng-click = "select('Nic')">Select</button> -->
-
-
-
-
-<!--      <label class="item item-input">Birth date</label>
-          <ionic-datepicker input-obj="birthdayDatePicker">
-            <button class="button button-block button-positive">{{myBirthday| date:'dd-MM-yyyy'}}
-            </button>
-          </ionic-datepicker> -->
-
-<!-- <input date-range-picker class="form-control date-picker" type="text" ng-model="date" min="'2014-02-23'" max="'2015-02-25'"/> -->
-<!-- <div class="form-group" ng-class="{'has-error': dateForm.daterange2.$invalid}">
-                    <label for="daterange2" class="control-label">Picker with min and max date
-                    </label>
-                    <input type = "date-range-picker" id="daterange2" name="daterange2" class="form-control date-picker" 
-                           min="'2015-01-23'" max="'2015-08-25'" ng-model="date"
-                           required/>
-                    </div> -->
 <form name = "f1">
     <div class = "col">
       <label class="item item-input" >
         <input type = "text" placeholder="Register Number" ng-model="report.text" required>
       </label>
     </div>
-
-
-<!-- <date-range-picker ng-model="dateRange"
-                               class="pull-right"
-                               style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc"
-                       minDate="'2015-01-23'" maxDate="'2015-08-25'"
-                               >
-            
-
-</date-range-picker> -->
-
-
     <div class = "col">
       <label class="item item-input">
         <span class="input-label" style = "color: #29a329; font-size : 14px">Time</span>
@@ -118,9 +84,6 @@
       <div class="input-label" style = "color: #29a329; font-size : 14px">
         Managers
       </div>
-   <!--    <select  ng-model="report.managers"  class="form-control" > 
-        <option   ng-repeat="managers in managers track by $index" value="{{managers}}">{{managers}}</option> 
-      </select> -->
       <select ng-options="manager.name for manager in managers" ng-model="something">
           <option   value="{{manager}}">{{manager}}</option> 
 <select>
@@ -133,9 +96,6 @@
         Management Rep
       </div>
       <select ng-model="report.rep" ng-change="selected()" class="form-control" > 
-        <!--
-        <option  ng-repeat="category in department" value="{{category}}">{{category.departmentName}}</option> -->
-
       </select>
     </label>
   </div>
@@ -174,9 +134,6 @@
       Title
     </div>
     <select ng-model="report.department" ng-change="selected()" class="form-control" > 
-        <!--
-        <option  ng-repeat="category in department" value="{{category}}">{{category.departmentName}}</option> -->
-
       </select>
     </label>
   </div></div>
@@ -193,9 +150,6 @@
         Title
       </div>
       <select ng-model="report.department" ng-change="selected()" class="form-control" > 
-        <!--
-        <option  ng-repeat="category in department" value="{{category}}">{{category.departmentName}}</option> -->
-
       </select>
     </label>
   </div></div>
@@ -212,21 +166,13 @@
         Title
       </div>
       <select ng-model="report.department" ng-change="selected()" class="form-control" > 
-        <!--
-        <option  ng-repeat="category in department" value="{{category}}">{{category.departmentName}}</option> -->
-
       </select>
     </label>
   </div></div>
   <div class = "col">
     <label class="item item-input">
-
       <span class="input-label" style = "color: #29a329; font-size : 14px">Review Date</span>
-      <!-- This was making report.date null for some reason. TODO: fix -->
-      <!-- TODO: ADD validation here - not max & min -->
       <input type="datetime-local" ng-model="report.revDate" value="{{date | date:'mediumTime'}}">
-      <!-- <input type="datetime-local" ng-model="report.date" max="{{maxDateTimeString}}" min="{{minDateTimeString}}" value="{{date | date:'mediumTime'}}"> -->
-
     </label>
   </div>
   <div class = "row" style = "margin-left : -5px">
@@ -236,8 +182,6 @@
         <ion-checkbox style = "color: #29a329">RA Superceeded</ion-checkbox></div></div>
 
         <button class="button button-block button-positive" ng-disabled="f1.$invalid" ng-click="submit()">Submit</button>
-   <!--      <button class="button button-block button-assertive button-outline button-clear" ng-click="clear()">Clear</button> -->
-          <!--  <button class="button-clear" ng-click="myGoBack()">Back</button> -->
    </form>
   
       </div>

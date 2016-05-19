@@ -1,3 +1,5 @@
+
+
 angular.module('starter.workplacectrl', [])
 
 .controller('WorkPlaceCtrl', function($scope, $firebaseArray, $ionicHistory, $ionicActionSheet, $location ,$ionicPopup) {
@@ -10,7 +12,7 @@ angular.module('starter.workplacectrl', [])
   };
     var d = new Date() - 1000 * 60 * 60 * 24 * 5;
   // var minDate = maxDateTime - 1000 * 60 * 60 * 24 * 5;
-
+  // Connect to the database
  var ref = new Firebase("https://mysafe.firebaseio.com/workspace/");
    ref.authWithPassword({
   "email": "s.harshita.89@gmail.com",

@@ -1,0 +1,192 @@
+<ion-view title="Safe@Scneider" ng-init="InitializeHazard()" cache-view="false">
+ <ion-nav-bar class="bar-stable">  </ion-nav-bar>
+<ion-nav-buttons side="left">
+ <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-arrow-left-c" style = "color: green" ></i> </button>
+</ion-nav-buttons>
+
+<ion-nav-buttons side="right">
+ <button class="button button-clear icon ion-home" ng-click="myHome()"></button>
+</ion-nav-buttons>
+
+<ion-content padding="true">
+
+<div class="max-width ">
+  <div class="list no-margin-top">
+
+          <center><img src = "http://www.defenddemocracy.org/content/uploads/general/Schneider_Electric_Logo.gif"></center>
+
+                <div class="bar bar-balanced">
+  <h1 class="title">Hazard Report Form</h1>
+</div><br><br><br>
+<form name = "f2">
+
+<div style="background-color: #000033  ; color:white; padding:20px;" >
+
+
+<div class ="row">
+
+      <class = "title" style = "margin-left: 15px; font: 32px;font-weight: bold; "><center> SECTION A  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;   (TO BE COMPLETED BY HAZRAD REPORTER)
+  </div><br>
+
+
+<div class ="row">
+  <div class = "col" style = "margin-left : 10px">
+    <label class="item item-input" >
+      <class = "title"> Form No. 
+    </label>
+  </div>
+   <div class = "col" style = "margin-right : -20px">
+    <label class="item item-input" >
+      <class = "title"> Revision No. 
+    </label>
+  </div>
+</div>
+
+
+
+<div class = "col" >
+      <label class="item item-input item-select">
+        <div class="input-label" style = "color: #29a329; font-size : 14px">
+          Plant/Department
+        </div>
+
+    <select ng-model="hazard.plant"  class="form-control" > 
+            <option  ng-repeat="department in plant track by $index" value="{{department}}">{{department.departmentName}}</option> 
+          </select>
+        </label>
+      </div>
+
+      <div class = "col" >
+      <label class="item item-input item-select">
+        <div class="input-label" style = "color: #29a329; font-size : 14px">
+          Supervisor
+        </div>
+        
+      <select ng-options="manager.name for manager in managers" ng-model="hazard.super">
+          <option   value="{{manager}}">{{manager}}</option> 
+        <select>
+        </label>
+      </div>
+
+
+
+      <div class = "col" >
+      <label class="item item-input item-select">
+        <div class="input-label" style = "color: #29a329; font-size : 14px">
+          Manager
+        </div>
+
+      <select ng-options="manager.name for manager in managers" ng-model="hazard.manager">
+          <option   value="{{manager}}">{{manager}}</option> 
+        <select>
+        </label>
+      </div>
+
+<div class = "col"  style = " margin-right : -20px">
+    <label class="item item-input">
+
+      <span class="input-label"  style = "color: #29a329; font-size : 14px">Incident Date</span>
+      <input type="datetime-local" ng-model="incident.date" value="{{date | date:'mediumTime'}}">
+    </label>
+</div>
+
+
+<div class = "row" >
+<div class = "col" style = "margin-left : 10px">
+<label class="item item-input item-floating-label">
+         <span class="input-label" style = "color: #29a329; font-size : 14px">Location</span>
+          <input type="text" placeholder="Location" style = "color:white;">
+        </label>
+</div>
+<div class = "col"  style = " margin-right : -20px">
+<label class="item item-input item-floating-label">
+         <span class="input-label" style = "color: #29a329; font-size : 14px">Name</span>
+          <input type="text" placeholder="Name"  style = "color:white;">
+        </label>
+</div>
+</div>
+
+<div class = "row" >
+<div class = "col" style = "margin-left : 10px">
+<label class="item item-input item-floating-label">
+         <span class="input-label" style = "color: #29a329; font-size : 14px">Reported To:</span>
+          <input type="text" placeholder="Reported To:"  style = "color:white;">
+        </label>
+</div>
+<div class = "col"  style = " margin-right : -20px">
+<label class="item item-input item-floating-label">
+         <span class="input-label" style = "color: #29a329; font-size : 14px">ID Number</span>
+          <input type="text" placeholder="ID Number" style = "color:white;">
+        </label>
+</div>
+</div>
+<div class = "radio-toolbar">
+  <div class ="col">
+    <label class="item item-input">
+      <input type = "text" placeholder="Description" ng-model="incident.description">
+    </label>
+</div>
+<div class = "row">
+  <div class = "col" style = "margin-left : 10px">
+  <input type="radio" name="impact" value="People" style = "color: #29a329;"checked> People
+</div>
+  <div class = "col" style = "margin-left : 90px">
+  <input type="radio" name="impact" style = "color: #29a329;" value="Environment"> Environment
+</div>
+  <div class = "col"  style = " margin-right : -90px">
+  <input type="radio" name="impact" style = "color: #29a329;" value="Property"> Property
+</div>
+</div>
+</div>
+
+<div class = "col">
+ <label class="item item-input item-floating-label">
+   <span class="input-label"  style = "color: #29a329;">Immediate Action Taken:</span>
+   <input type="text" placeholder="Immediate Action Taken:" style = "color:white;">
+   </label>
+ </div>
+
+
+
+<div class = "row">
+  <div class = "col" style = "margin-left : 10px">
+  <input type="radio" name="action" value="People" style = "color: #29a329;"checked> Yes
+</div>
+  <div class = "col" style = "margin-left : 90px">
+
+  <input type="radio" name="action" style = "color: #29a329;" value="Environment"> No
+</div>
+</div>
+
+
+<div class = "col">
+ <label class="item item-input item-floating-label">
+   <span class="input-label"  style = "color: #29a329;">Recommended Corrective Actions:</span>
+   <input type="text" placeholder="Recommended Corrective Actions:" style = "color:white;">
+   </label>
+ </div>
+ </div>
+</div>
+</div>
+    <button class="button button-icon icon ion-camera" ng-click="takePicture()"></button>
+    <img data-ng-src="{{incident.imgURI}}" class="center" style="max-width: 100%" ng-show="displayImage()">
+
+  <button class="button button-block button-balanced" ng-disabled="f2.$invalid" ng-click="submit()">Submit</button>
+<button ng-click="sendFeedback()" class="button button-icon icon ion-email">
+   Send mail
+</button>
+
+<p>
+Send an email to <a href="#" ng-click="sendEmail('s.harshita.89@gmail.com')">s.harshita.89@gmail.com</a>
+</p>
+
+<button ng-click="sendEmail()" class="button button-icon icon ion-email">
+   Send mail
+</button>
+
+</form>
+</div>
+</div>
+</ion-content>
+
+

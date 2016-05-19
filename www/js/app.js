@@ -23,6 +23,7 @@ angular.module('starter', ['ionic','starter.logincontroller',
             'firebase',
           'starter.services',
               'starter.workplacectrl',
+              'starter.admindatadeletecontroller','starter.hazardctrl',
   'ngCordova','ngMessages','ngCsv', 'ngSanitize'])
 
 
@@ -35,8 +36,6 @@ angular.module('starter', ['ionic','starter.logincontroller',
                 StatusBar.styleDefault();
             }
 
-  
-
     // db = $cordovaSQLite.openDB({ name: "document.db"});
     //         $cordovaSQLite.execute(db, "CREATE TABLE ID IF NOT EXISTS category(id integer primary key autoincrement, name text)");
          
@@ -47,32 +46,17 @@ angular.module('starter', ['ionic','starter.logincontroller',
         //     console.error("There was an error copying the database: " + error);
         //     db = $cordovaSQLite.openDB("document.db");
         // });
-
-       
-
-
         });
-        
-
-
-
-
-
-
 })
 
-
-.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   
-$httpProvider.defaults.useXDomain = true;$httpProvider.defaults.withCredentials = true;
-delete $httpProvider.defaults.headers.common["X-Requested-With"];
-$httpProvider.defaults.headers.common["Accept"] = "application/json";
-$httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+
 
   $stateProvider
 
@@ -149,6 +133,16 @@ $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
       }
     }
   })
+      .state('tab.hazard', {
+    url: '/hazard',
+    views: {
+      'tab-hazard': {
+        templateUrl: 'templates/tab-hazard.html',
+        controller: 'HazardCtrl'
+      }
+    }
+  })
+
             .state('riskreport', {
     url: '/riskreport',
   
@@ -185,6 +179,11 @@ $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
   //       }
   //     }
   //   })
+.state('admindatadelete', {
+    url:'/admindatadelete',
+    templateUrl: 'templates/admindatadelete.html',
+    controller: 'AdminDataDeleteController'
+  }) 
 
 .state('login', {
     url:'/login',
